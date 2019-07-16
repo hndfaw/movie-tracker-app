@@ -1,0 +1,11 @@
+.snippet {
+  background-color: grey;
+  margin: 5px;
+  width: 16%;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}

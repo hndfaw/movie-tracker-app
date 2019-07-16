@@ -1,9 +1,7 @@
 export const favoriteReducer = (state = [], action) => {
   switch(action.type) {
     case 'FAVORITE_MOVIES':
-      // return state.map(movie => {
-
-      // })
+      return state
     default:
       return state
   }

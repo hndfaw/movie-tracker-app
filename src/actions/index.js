@@ -9,7 +9,7 @@ export const signIn = (user) => ({
 })
 
 export const favoriteMovie = (movie) => ({
-  type: 'FAVORITE',
+  type: 'FAVORITE_MOVIES',
   movie
 })
 

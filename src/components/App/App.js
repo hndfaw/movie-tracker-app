@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <img src={require("../../images/Cinema.jpg")} className='background-image' />
+       <img src={require("../../images/Cinema.jpg")} className='background-image' alt="movie"/>
         <header className="App-header">
           <h1>MOVIE TRACKER</h1>
         </header>

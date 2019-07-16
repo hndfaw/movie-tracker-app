@@ -4,14 +4,17 @@ import User from '../User/User'
 import './App.css';
 import { fetchFilms, fetchGenre } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
+import { recentMovies } from '../../actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
 
    componentDidMount() {
 
-    fetchFilms().then(data => console.log(data.results))
-    fetchGenre().then(data => console.log(data.genres))
+    fetchFilms().then(data => 
+      this.props.handleMoviesData(data.results))
+    // fetchGenre().then(data => console.log(data.genres))
   }
 
   render() {
@@ -31,6 +34,10 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  handleMoviesData: text => dispatch( recentMovies(text) )
+})
 
 
-export default App;
+export default connect( mapDispatchToProps)(App);
+

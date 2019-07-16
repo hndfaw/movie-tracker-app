@@ -1,9 +1,9 @@
-import { Component} from 'react'
+import React, { Component} from 'react'
 import SignIn from '../../Containers/SignIn/SignIn'
 import SignUp from '../../Containers/SignUp/SignUp'
 
 class SignUpForm extends Component {
-  constru() {
+  constructor() {
     super();
     this.state = {
       signIn: false,
@@ -12,10 +12,10 @@ class SignUpForm extends Component {
   }
   render() {
   return (
-    <div>
+    <section>
       {this.state.signIn && <SignIn />}
       {this.state.signUp && <SignUp />}
-    </div>
+    </section>
   )
   }
 }

@@ -1,11 +1,9 @@
 import React from 'react';
-import Login from '../../containers/Login/Login'
-import ShowFavorites from '../../containers/ShowFavorites/ShowFavorite'
+import ShowFavorites from '../../Containers/ShowFavorites/ShowFavorite'
 
 const User = () => {
   return(
     <section>
-      <Login />
       <ShowFavorites />>
     </section>
   )

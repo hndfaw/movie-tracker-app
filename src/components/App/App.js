@@ -3,10 +3,9 @@ import MovieContainer from '../MovieContainer/MovieContainer';
 import User from '../User/User'
 import './App.css';
 import { fetchFilms, fetchGenre } from '../../apiCalls'
+import SignUpForm from '../SignUpForm/SignUpForm'
 
-
-
- class App extends Component {
+class App extends Component {
 
 
    componentDidMount() {
@@ -21,7 +20,7 @@ import { fetchFilms, fetchGenre } from '../../apiCalls'
         <header className="App-header">
           <h1>MOVIE TRACKER</h1>
         </header>
-        <User />
+        <SignUpForm />
         <MovieContainer />
         <footer>
           <p>Powered by TMDB</p>

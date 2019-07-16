@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { Component} from 'react'
 import SignIn from '../../Containers/SignIn/SignIn'
 import SignUp from '../../Containers/SignUp/SignUp'
 
-const SignUpForm = () => {
+class SignUpForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      signIn: false,
+      signUp: true
+    }
+  }
+  render() {
   return (
-    <div>
-      <SignIn />
-      <SignUp />
-    </div>
+    <section>
+      {this.state.signIn && <SignIn />}
+      {this.state.signUp && <SignUp />}
+    </section>
   )
+  }
 }
 
 export default SignUpForm;

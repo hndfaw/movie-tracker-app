@@ -1,8 +1,17 @@
 import React from 'react';
+import MovieSnippet from '../../Containers/MovieSnippet/MovieSnippet';
+import './GenreContainer.css'
 
-const GenreContainer = () => {
+const GenreContainer = ({title}) => {
   return (
-    null
+    <section className='genre-container'>
+      <h2>{title}</h2>
+      <MovieSnippet />
+      <MovieSnippet />
+      <MovieSnippet />
+      <MovieSnippet />
+      <MovieSnippet />
+    </section>
   )
 }
 

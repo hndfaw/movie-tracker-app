@@ -7,6 +7,7 @@ import SignUpForm from '../SignUpForm/SignUpForm'
 function App() {
   return (
     <div className="App">
+      <img src={require("../../images/Cinema.jpg")} className='background-image' />
       <header className="App-header">
         <h1>MOVIE TRACKER</h1>
       </header>

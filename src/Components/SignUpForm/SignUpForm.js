@@ -13,8 +13,8 @@ class SignUpForm extends Component {
   render() {
   return (
     <div>
-      <SignIn />
-      <SignUp />
+      {this.state.signIn && <SignIn />}
+      {this.state.signUp && <SignUp />}
     </div>
   )
   }

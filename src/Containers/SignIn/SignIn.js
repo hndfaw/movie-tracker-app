@@ -14,7 +14,9 @@ class SignIn extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  verify
+  verifyUserNameAndPassword = () => {
+
+  }
 
   render() {
     console.log(this.state.users)
@@ -36,6 +38,7 @@ class SignIn extends Component {
           value={this.state.password}
           id="signIn-password"
           onChange={(e) => this.handleInput(e)}/>
+        <button onClick={this.verifyUserNameAndPassword}>Sign In</button>
       </form>
     )
   }

@@ -4,7 +4,7 @@ import { usersReducer } from './usersReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
-  // users: usersReducer
+  users: usersReducer
 });
 
 export default rootReducer;

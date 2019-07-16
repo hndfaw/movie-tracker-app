@@ -15,8 +15,8 @@ class App extends Component {
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
 
-    // fetchUsers().then(users => 
-    //   this.props.handleUsers(users.data))
+    fetchUsers().then(users => 
+      this.props.handleUsers(users.data))
       
       
 
@@ -43,7 +43,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => ({
   handleMoviesData: movies => dispatch(recentMovies(movies)),
-  // handleUsers: users => dispatch(allUsers(users))
+  handleUsers: users => dispatch(allUsers(users))
 })
 
 

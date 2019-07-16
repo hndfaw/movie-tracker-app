@@ -1,17 +1,20 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import User from '../User/User'
+// import User from '../User/User'
 import './App.css';
-import { fetchFilms, fetchGenre } from '../../apiCalls'
+import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
+import { recentMovies } from '../../actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
 
    componentDidMount() {
 
-    fetchFilms().then(data => console.log(data.results))
-    fetchGenre().then(data => console.log(data.genres))
+    fetchFilms().then(data => 
+      this.props.handleMoviesData(data.results))
+    // fetchGenre().then(data => console.log(data.genres))
   }
 
   render() {
@@ -33,4 +36,10 @@ class App extends Component {
 
 
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  handleMoviesData: movies => dispatch( recentMovies(movies) )
+})
+
+
+export default connect(null, mapDispatchToProps )(App);
+

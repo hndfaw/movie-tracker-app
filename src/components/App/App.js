@@ -15,7 +15,9 @@ class App extends Component {
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
 
-
+    fetchUsers().then(users => 
+      console.log(users.data))
+      
 
     // fetchGenre().then(data => console.log(data.genres))
   }
@@ -38,9 +40,8 @@ class App extends Component {
 }
 
 
-
 const mapDispatchToProps = dispatch => ({
-  handleMoviesData: movies => dispatch( recentMovies(movies) )
+  handleMoviesData: movies => dispatch(recentMovies(movies))
 })
 
 

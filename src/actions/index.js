@@ -18,3 +18,8 @@ export const recentMovies = (movies) => ({
   movies
 })
 
+export const allUsers = (users) => ({
+  type: 'ALL_USERS',
+  users
+})
+

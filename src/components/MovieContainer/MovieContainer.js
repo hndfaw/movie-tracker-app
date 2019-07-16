@@ -5,11 +5,9 @@ import './MovieContainer.css';
 const MovieContainer = () => {
   return (
     <main className='movie-container'>
-      <GenreContainer />
-      <GenreContainer />
-      <GenreContainer />
-      <GenreContainer />
-      <GenreContainer />
+      <GenreContainer title='ACTION'/>
+      <GenreContainer title='ANIME'/>
+      <GenreContainer title='COMEDY'/>
     </main>
   )
 }

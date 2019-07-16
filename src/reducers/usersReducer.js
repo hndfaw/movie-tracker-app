@@ -1,6 +1,6 @@
-export const moviesReducer = (state = [], action) => {
+export const usersReducer = (state = [], action) => {
   switch(action.type) {
-    case 'RECENT_MOVIES':
+    case 'ALL_USERS':
       return action.users
     default:
       return state

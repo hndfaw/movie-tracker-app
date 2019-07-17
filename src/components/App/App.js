@@ -3,7 +3,7 @@ import MovieContainer from '../MovieContainer/MovieContainer';
 import Movie from '../../Containers/Movie/Movie'
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import { fetchFilms, fetchUsers } from '../../apiCalls'
+import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
 import { recentMovies, allUsers } from '../../actions';
 import { connect } from 'react-redux';
@@ -15,12 +15,6 @@ class App extends Component {
 
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
-
-    fetchUsers().then(users => 
-      this.props.handleUsers(users.data))
-      
-      
-
     // fetchGenre().then(data => console.log(data.genres))
   }
 

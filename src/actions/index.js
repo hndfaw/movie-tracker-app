@@ -1,11 +1,5 @@
-export const signUp = (user) => ({
-  type: 'SIGN_UP',
-  user
-})
-
-export const signIn = (userData, userInput) => ({
+export const signIn = (userData) => ({
   type: 'SIGN_IN',
-  userInput,
   userData
 })
 

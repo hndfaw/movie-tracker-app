@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
+import { fetchUser } from '../../apiCalls'
 
 
 class SignIn extends Component {
@@ -9,6 +10,7 @@ class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
+      error: null
     }
   }
 
@@ -16,24 +18,40 @@ class SignIn extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  ok = (e) => {
-    e.preventDefault();
-    if (this.state.email !== "" && this.state.password !== "") {
-      this.props.verifyInput(this.props.users, this.state)
-      console.log('ok')
-    }
+  handleUserSignIn = (e) => {
+    e.preventDefault()
+    fetchUser({email: this.state.email, password: this.state.password})
+      .then(response => {
+        if (response.data === undefined) {
+          this.setState({error: 'Incorrect Email/Password'})
+        } else {
+        this.props.signUserIn(response.data)
+        this.handleResetError()
+      }})
+      .catch(error => this.setState({error: error.message}))
+    this.handleResetInputs()
   }
 
-  render() {
+  handleResetInputs = () => {
+    this.setState({
+      email: '',
+      password: '',
+    })
+  }
 
+  handleResetError = () => {
+    this.setState({error: null})
+  }
+  render() {
     return (
       <form >
+        {this.state.error && <h2>{this.state.error}</h2>}
         <label htmlFor="signIn-email">Email</label>
         <input 
           type="email" 
           placeholder="Enter Email Here" 
           name="email" 
-          value={this.state.emai} 
+          value={this.state.email} 
           id="signIn-email" 
           onChange={(e) => this.handleInput(e)}/>
         <label htmlFor="signIn-password">Password</label>
@@ -45,18 +63,14 @@ class SignIn extends Component {
           id="signIn-password"
           onChange={(e) => this.handleInput(e)}/>
         <button
-        onClick={this.ok}>Sign In</button>
+        onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
       </form>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  users: state.users
-})
-
 const mapDispatchToProps = dispatch => ({
-  verifyInput: (userData, userInput) => dispatch( signIn(userData, userInput) )
+  signUserIn: (user) => dispatch( signIn(user) )
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);

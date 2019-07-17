@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' 
+import { postNewUser } from '../../apiCalls'
 
 class SignUp extends Component {
   constructor() {
@@ -8,7 +9,9 @@ class SignUp extends Component {
       name: '',
       email: '',
       password: '',
-      password2: ''
+      password2: '',
+      currentUser: '',
+      error: ''
     }
   }
 
@@ -19,6 +22,16 @@ class SignUp extends Component {
   checkPassword(pass1, pass2) {
     return pass1 === pass2 ? true : false;
   }
+
+  handleSignUp = (e) => {
+    e.preventDefault()
+    if(!this.checkPassword(this.state.password, this.state.password2)) {
+      return console.log('Error with passwords')
+    }
+    postNewUser({name: this.state.name, email: this.state.email, password: this.state.password})
+      .then(response => console.log(response))
+  }
+
   render() {
     return (
       <form>
@@ -53,6 +66,9 @@ class SignUp extends Component {
           name="password2"
           value={this.state.password2}
           onChange={(e) => this.handleInput(e)}/>
+        <button
+          onClick={(e) => this.handleSignUp(e)}
+        >Submit</button> 
       </form>
     )
   }

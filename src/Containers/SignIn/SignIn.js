@@ -4,7 +4,7 @@ import { signIn } from '../../actions';
 import { fetchUser } from '../../apiCalls'
 
 
-class SignIn extends Component {
+export class SignIn extends Component {
   constructor() {
     super();
     this.state = {
@@ -73,7 +73,7 @@ class SignIn extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signUserIn: (user) => dispatch( signIn(user) )
 })
 

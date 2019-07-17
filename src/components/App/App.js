@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
-import { recentMovies, allUsers } from '../../actions';
+import { recentMovies } from '../../actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -38,7 +38,6 @@ class App extends Component {
             render={({ match }) => {
               const id = match.params;
               const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(id.id))
-              console.log(id)
               return movie && <Movie movie={movie} />
             }}
             />
@@ -60,8 +59,7 @@ export const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleMoviesData: movies => dispatch(recentMovies(movies)),
-  handleUsers: users => dispatch(allUsers(users))
+  handleMoviesData: movies => dispatch(recentMovies(movies))
 })
 
 

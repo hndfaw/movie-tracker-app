@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Movie = (props) => {
+const Movie = ({ movie }) => {
+  console.log(movie)
   return (
     <article>
       <h2>Name: Spiderman: Far From Home</h2>

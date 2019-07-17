@@ -5,9 +5,10 @@ import './GenreContainer.css'
 
 const GenreContainer = props => {
   const { movies } = props;
-  console.log(movies)
   const snippets = movies.map(movie => {
-    return <MovieSnippet path={movie.poster_path} />
+    return <MovieSnippet path={movie.poster_path} 
+                          key={movie.id} 
+                          id={movie.id}/>
   })
   return (
     <section className='genre-container'>

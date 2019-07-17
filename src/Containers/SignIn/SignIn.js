@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
+import { fetchUser } from '../../apiCalls'
 
 
 class SignIn extends Component {
@@ -9,6 +10,8 @@ class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
+      currentUser: '',
+      error: ''
     }
   }
 
@@ -16,16 +19,13 @@ class SignIn extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  ok = (e) => {
-    e.preventDefault();
-    if (this.state.email !== "" && this.state.password !== "") {
-      this.props.verifyInput(this.props.users, this.state)
-      console.log('ok')
-    }
+  handleUserSignIn = (e) => {
+    e.preventDefault()
+    fetchUser({email: this.state.email, password: this.state.password})
+      .then(response => this.setState({currentUser: response.data}))
+      .catch(error => this.setState({error: error.message}))
   }
-
   render() {
-
     return (
       <form >
         <label htmlFor="signIn-email">Email</label>
@@ -33,7 +33,7 @@ class SignIn extends Component {
           type="email" 
           placeholder="Enter Email Here" 
           name="email" 
-          value={this.state.emai} 
+          value={this.state.email} 
           id="signIn-email" 
           onChange={(e) => this.handleInput(e)}/>
         <label htmlFor="signIn-password">Password</label>
@@ -45,7 +45,7 @@ class SignIn extends Component {
           id="signIn-password"
           onChange={(e) => this.handleInput(e)}/>
         <button
-        onClick={this.ok}>Sign In</button>
+        onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
       </form>
     )
   }

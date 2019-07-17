@@ -12,12 +12,43 @@ export const fetchGenre = () => {
      .then(data => data)
 };
 
-export const fetchUsers = () => {
+export const fetchUser = (data) => {
+  const option = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }
   let url = 'http://localhost:3000/api/users'
-   return fetch(url)
-     .then(response => response.json())
-     .then(data => data)
+   return fetchData(url, option)
+     .catch(error => console.log(error.message))
 };
+
+export const postNewUser = (data) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }
+  const url = 'http://localhost:3000/api/users/new'
+    return fetchData(url, options)
+      .then(response => console.log(response))
+      .catch(error => console.log(error.message))
+}
+
+export const fetchData = (url, options) => {
+  return fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response)
+      } else {
+        return response.json()
+      }
+    }).catch(error => console.log(error.message))
+}
 
 
 

@@ -1,8 +1,7 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
-// import User from '../User/User'
 import './App.css';
-import { fetchFilms, fetchUsers } from '../../apiCalls'
+import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
 import { recentMovies, allUsers } from '../../actions';
 import { connect } from 'react-redux';
@@ -14,12 +13,6 @@ class App extends Component {
 
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
-
-    fetchUsers().then(users => 
-      this.props.handleUsers(users.data))
-      
-      
-
     // fetchGenre().then(data => console.log(data.genres))
   }
 

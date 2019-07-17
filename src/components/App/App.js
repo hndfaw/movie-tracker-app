@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
-// import User from '../User/User'
+import { Route } from 'react-router-dom';
 import './App.css';
 import { fetchFilms, fetchUsers } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
@@ -30,8 +30,18 @@ class App extends Component {
         <header className="App-header">
           <h1>MOVIE TRACKER</h1>
         </header>
-        <SignUpForm />
-        <MovieContainer />
+        <Route exact path='/'
+          render={() => (
+            <>
+              <SignUpForm />
+              <MovieContainer />
+            </>
+          )} 
+        />
+        <Route render={() => (
+          <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
+        )}
+        />
         <footer>
           <p>Powered by TMDB</p>
         </footer>

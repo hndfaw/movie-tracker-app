@@ -3,9 +3,10 @@ export const signUp = (user) => ({
   user
 })
 
-export const signIn = (user) => ({
+export const signIn = (userData, userInput) => ({
   type: 'SIGN_IN',
-  user
+  userInput,
+  userData
 })
 
 export const favoriteMovie = (movie) => ({

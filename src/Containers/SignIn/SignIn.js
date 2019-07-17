@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions';
+
 
 class SignIn extends Component {
   constructor() {
@@ -14,14 +16,18 @@ class SignIn extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  verifyUserNameAndPassword = () => {
-
+  ok = (e) => {
+    e.preventDefault();
+    if (this.state.email !== "" && this.state.password !== "") {
+      this.props.verifyInput(this.props.users, this.state)
+      console.log('ok')
+    }
   }
 
   render() {
-    console.log(this.state.users)
+
     return (
-      <form>
+      <form >
         <label htmlFor="signIn-email">Email</label>
         <input 
           type="email" 
@@ -38,7 +44,8 @@ class SignIn extends Component {
           value={this.state.password}
           id="signIn-password"
           onChange={(e) => this.handleInput(e)}/>
-        <button onClick={this.verifyUserNameAndPassword}>Sign In</button>
+        <button
+        onClick={this.ok}>Sign In</button>
       </form>
     )
   }
@@ -48,8 +55,8 @@ const mapStateToProps = state => ({
   users: state.users
 })
 
-// const mapDispatchToProps = dispatch => ({
-//   handleSubmit: text => dispatch( addTodo(text) )
-// })
+const mapDispatchToProps = dispatch => ({
+  verifyInput: (userData, userInput) => dispatch( signIn(userData, userInput) )
+})
 
-export default connect(mapStateToProps, null)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

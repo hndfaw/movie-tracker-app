@@ -11,6 +11,7 @@ class SignUpForm extends Component {
     }
   }
   render() {
+    
   return (
     <section>
       {this.state.signIn && <SignIn />}

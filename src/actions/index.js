@@ -12,9 +12,3 @@ export const recentMovies = (movies) => ({
   type: 'RECENT_MOVIES',
   movies
 })
-
-export const allUsers = (users) => ({
-  type: 'ALL_USERS',
-  users
-})
-

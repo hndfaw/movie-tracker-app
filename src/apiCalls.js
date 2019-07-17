@@ -35,7 +35,6 @@ export const postNewUser = (data) => {
   }
   const url = 'http://localhost:3000/api/users/new'
     return fetchData(url, options)
-      .then(response => console.log(response))
       .catch(error => console.log(error.message))
 }
 
@@ -47,7 +46,7 @@ export const fetchData = (url, options) => {
       } else {
         return response.json()
       }
-    }).catch(error => console.log(error.message))
+    }).catch(error => new Error(error.message))
 }
 
 

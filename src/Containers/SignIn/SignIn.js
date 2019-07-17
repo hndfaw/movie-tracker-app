@@ -22,8 +22,22 @@ class SignIn extends Component {
   handleUserSignIn = (e) => {
     e.preventDefault()
     fetchUser({email: this.state.email, password: this.state.password})
-      .then(response => this.setState({currentUser: response.data}))
+      .then(response => {
+        if (response.data === undefined) {
+          this.setState({error: 'Incorrect Email/Password'})
+        } else {
+        this.props.signUserIn(response.data)}})
+      .then(res => this.handleResetState())
       .catch(error => this.setState({error: error.message}))
+  }
+
+  handleResetState = () => {
+    this.setState({
+      email: '',
+      password: '',
+      currentuser: '',
+      error: ''
+    })
   }
   render() {
     return (
@@ -51,12 +65,8 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  users: state.users
-})
-
 const mapDispatchToProps = dispatch => ({
-  verifyInput: (userData, userInput) => dispatch( signIn(userData, userInput) )
+  signUserIn: (user) => dispatch( signIn(user) )
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);

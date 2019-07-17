@@ -1,21 +1,33 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions';
+
 
 class SignIn extends Component {
   constructor() {
     super();
     this.state = {
       email: '',
-      password: ''
+      password: '',
     }
   }
 
   handleInput = e => {
     this.setState({[e.target.name]: e.target.value})
   }
+
+  ok = (e) => {
+    e.preventDefault();
+    if (this.state.email !== "" && this.state.password !== "") {
+      this.props.verifyInput(this.props.users, this.state)
+      console.log('ok')
+    }
+  }
+
   render() {
+
     return (
-      <form>
+      <form >
         <label htmlFor="signIn-email">Email</label>
         <input 
           type="email" 
@@ -32,9 +44,19 @@ class SignIn extends Component {
           value={this.state.password}
           id="signIn-password"
           onChange={(e) => this.handleInput(e)}/>
+        <button
+        onClick={this.ok}>Sign In</button>
       </form>
     )
   }
 }
 
-export default SignIn
+const mapStateToProps = state => ({
+  users: state.users
+})
+
+const mapDispatchToProps = dispatch => ({
+  verifyInput: (userData, userInput) => dispatch( signIn(userData, userInput) )
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

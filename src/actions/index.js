@@ -3,9 +3,10 @@ export const signUp = (user) => ({
   user
 })
 
-export const signIn = (user) => ({
+export const signIn = (userData, userInput) => ({
   type: 'SIGN_IN',
-  user
+  userInput,
+  userData
 })
 
 export const favoriteMovie = (movie) => ({
@@ -16,5 +17,10 @@ export const favoriteMovie = (movie) => ({
 export const recentMovies = (movies) => ({
   type: 'RECENT_MOVIES',
   movies
+})
+
+export const allUsers = (users) => ({
+  type: 'ALL_USERS',
+  users
 })
 

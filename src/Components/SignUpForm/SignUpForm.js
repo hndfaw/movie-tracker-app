@@ -6,11 +6,12 @@ class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
-      signIn: false,
-      signUp: true
+      signIn: true,
+      signUp: false,
     }
   }
   render() {
+    
   return (
     <section>
       {this.state.signIn && <SignIn />}

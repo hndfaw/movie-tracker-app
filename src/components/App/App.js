@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import { Route } from 'react-router-dom';
+import Movie from '../../Containers/Movie/Movie'
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
@@ -24,18 +25,28 @@ class App extends Component {
         <header className="App-header">
           <h1>MOVIE TRACKER</h1>
         </header>
-        <Route exact path='/'
-          render={() => (
-            <>
-              <SignUpForm />
-              <MovieContainer />
-            </>
-          )} 
-        />
-        <Route render={() => (
-          <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
-        )}
-        />
+        <Switch>
+          <Route exact path='/'
+            render={() => (
+              <>
+                <SignUpForm />
+                <MovieContainer />
+              </>
+            )} 
+          />
+          <Route exact path='/movie/:id' 
+            render={({ match }) => {
+              const id = match.params;
+              const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(id.id))
+              console.log(id)
+              return movie && <Movie movie={movie} />
+            }}
+            />
+          <Route render={() => (
+            <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
+          )}
+          />
+        </Switch>
         <footer>
           <p>Powered by TMDB</p>
         </footer>
@@ -44,6 +55,9 @@ class App extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  movies: state.movies
+})
 
 const mapDispatchToProps = dispatch => ({
   handleMoviesData: movies => dispatch(recentMovies(movies)),
@@ -51,5 +65,5 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(null, mapDispatchToProps )(App);
+export default connect(mapStateToProps, mapDispatchToProps )(App);
 

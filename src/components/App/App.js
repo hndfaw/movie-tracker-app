@@ -18,8 +18,6 @@ class App extends Component {
     fetchUsers().then(users => 
       this.props.handleUsers(users.data))
       
-      
-
     // fetchGenre().then(data => console.log(data.genres))
   }
 

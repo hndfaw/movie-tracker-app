@@ -1,0 +1,12 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-info-card {
+  background: white;
+  margin: 25px;
+  padding: 10px;
+  width: 70%;
+}

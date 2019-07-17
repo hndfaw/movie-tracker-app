@@ -1,9 +1,8 @@
 .genre-container {
-  /* background-color: black; */
   border: solid 2px;
   color: white;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
-  margin: 30px 0px;
+  justify-content: space-between;
+  margin: 1% 0px;
 }

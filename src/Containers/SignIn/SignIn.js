@@ -10,8 +10,7 @@ class SignIn extends Component {
     this.state = {
       email: '',
       password: '',
-      currentUser: '',
-      error: ''
+      error: null
     }
   }
 
@@ -26,22 +25,27 @@ class SignIn extends Component {
         if (response.data === undefined) {
           this.setState({error: 'Incorrect Email/Password'})
         } else {
-        this.props.signUserIn(response.data)}})
-      .then(res => this.handleResetState())
+        this.props.signUserIn(response.data)
+        this.handleResetError()
+      }})
       .catch(error => this.setState({error: error.message}))
+    this.handleResetInputs()
   }
 
-  handleResetState = () => {
+  handleResetInputs = () => {
     this.setState({
       email: '',
       password: '',
-      currentuser: '',
-      error: ''
     })
+  }
+
+  handleResetError = () => {
+    this.setState({error: null})
   }
   render() {
     return (
       <form >
+        {this.state.error && <h2>{this.state.error}</h2>}
         <label htmlFor="signIn-email">Email</label>
         <input 
           type="email" 

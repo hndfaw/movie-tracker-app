@@ -1,3 +1,8 @@
+export const signIn = (userData) => ({
+  type: 'SIGN_IN',
+  userData
+})
+
 export const favoriteMovie = (movie) => ({
   type: 'FAVORITE_MOVIES',
   movie

@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension'
-import rootReducer from './Reducers';
+import rootReducer from './reducers/index';
 
 
 const store = createStore(rootReducer, composeWithDevTools())

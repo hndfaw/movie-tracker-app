@@ -1,18 +1,23 @@
 import React from 'react';
 import MovieSnippet from '../../Containers/MovieSnippet/MovieSnippet';
+import { connect } from 'react-redux'
 import './GenreContainer.css'
 
-const GenreContainer = ({title}) => {
+const GenreContainer = props => {
+  const { movies } = props;
+  console.log(movies)
+  const snippets = movies.map(movie => {
+    return <MovieSnippet path={movie.poster_path} />
+  })
   return (
     <section className='genre-container'>
-      <h2>{title}</h2>
-      <MovieSnippet />
-      <MovieSnippet />
-      <MovieSnippet />
-      <MovieSnippet />
-      <MovieSnippet />
+      {snippets}
     </section>
   )
 }
 
-export default GenreContainer;
+const mapStateToProps = state => ({
+  movies: state.movies
+})
+
+export default connect(mapStateToProps, null)(GenreContainer);

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import './MovieSnippet.css'
 
 const MovieSnippet = (props) => {
+  const url = 'https://image.tmdb.org/t/p/w500'
   return (
     <article className='snippet'>
-      <h2>IMAGE</h2>
+      <img src={url+props.path} className='poster'/>
     </article>
   )
 }

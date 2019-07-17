@@ -1,7 +1,11 @@
 .snippet {
   background-color: grey;
-  margin: 5px;
+  margin: 2px;
   width: 16%;
+}
+
+.poster {
+  width: 200px;
 }
 
 h2 {

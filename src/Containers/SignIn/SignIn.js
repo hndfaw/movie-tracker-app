@@ -23,10 +23,10 @@ class SignIn extends Component {
     fetchUser({email: this.state.email, password: this.state.password})
       .then(response => {
         if (response.data === undefined) {
-          this.setState({error: 'Incorrect Email/Password'})
+          this.handleSettingError()
         } else {
-        this.props.signUserIn(response.data)
-        this.handleResetError()
+          this.props.signUserIn(response.data)
+          this.handleResetError()
       }})
       .catch(error => this.setState({error: error.message}))
     this.handleResetInputs()
@@ -41,6 +41,10 @@ class SignIn extends Component {
 
   handleResetError = () => {
     this.setState({error: null})
+  }
+
+  handleSettingError = () => {
+    this.setState({error: 'Incorrect Email/Password'})
   }
   render() {
     return (

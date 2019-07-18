@@ -40,5 +40,22 @@ describe('SignIn Container', () => {
       expect(wrapper.state()).toEqual(expectedAfterResest)
       
     })
+
+    it('Should be able to reset the error property to null', () => {
+      wrapper.instance().setState({error: 'This is a mock error message'})
+      const expectedBeforeReset = 'This is a mock error message'
+      expect(wrapper.state().error).toEqual(expectedBeforeReset)
+      wrapper.instance().handleResetError()
+      const expectedAfterResest = null
+      expect(wrapper.state().error).toEqual(expectedAfterResest)
+    })
+
+    it('Should be able to set the error property to Incorrect Email/Password', () => {
+      const expectedErrorState = null
+      expect(wrapper.state().error).toEqual(expectedErrorState)
+      wrapper.instance().handleSettingError()
+      const exptectedErrorStateNow = 'Incorrect Email/Password'
+      expect(wrapper.state().error).toEqual(exptectedErrorStateNow)
+    })
   })
 })

@@ -12,3 +12,8 @@ export const recentMovies = (movies) => ({
   type: 'RECENT_MOVIES',
   movies
 })
+
+export const addFavMovie = (favMovie) => ({
+  type: 'FAVORITE_MOVIES',
+  favMovie
+})

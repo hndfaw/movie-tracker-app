@@ -1,9 +1,10 @@
 import React from 'react'
 import {SignIn, mapDispatchToProps} from './SignIn'
 import { shallow } from 'enzyme'
+import { signIn } from '../../actions/index'
 
 describe('SignIn Container', () => {
-  describe.only('SignIn Component', () => {
+  describe('SignIn Component', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = shallow(<SignIn />)
@@ -56,6 +57,27 @@ describe('SignIn Container', () => {
       wrapper.instance().handleSettingError()
       const exptectedErrorStateNow = 'Incorrect Email/Password'
       expect(wrapper.state().error).toEqual(exptectedErrorStateNow)
+    })
+
+    it('Should call the fetchUser api call when calling the handleUserSignIn method', () => {
+      //Mock fetch call?
+      //expect handleUserSign in to be called with fetchuser?
+      //Do I need to mock the handleUserSign In as well?
+    })
+  })
+
+  describe('mapDispatchToProps', () => {
+    it.skip('Should be called with the signIn function', () => {
+      const mockDispatch = jest.fn()
+      const user = {
+        name: 'ryan',
+        id: 1,
+        email: 'ryan@flachman.net',
+        password: 'password'
+      }
+      const expected = {'signInUser': signIn(user)}
+      const result = mapDispatchToProps(mockDispatch)
+      expect(result).toHaveBeenCalledWith(expected)
     })
   })
 })

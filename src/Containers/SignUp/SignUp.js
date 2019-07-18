@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux' 
 import { postNewUser } from '../../apiCalls'
 
 class SignUp extends Component {
@@ -26,7 +25,7 @@ class SignUp extends Component {
   handleSignUp = (e) => {
     e.preventDefault()
     if(!this.checkPassword(this.state.password, this.state.password2)) {
-      return console.log('Error with passwords')
+      return this.setState({error: 'Error with passwords'})
     }
     postNewUser({name: this.state.name, email: this.state.email, password: this.state.password})
       .then(response => console.log(response))

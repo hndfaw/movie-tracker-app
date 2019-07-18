@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
-import { recentMovies, allUsers } from '../../actions';
+import { recentMovies } from '../../actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
@@ -61,7 +61,6 @@ export const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleMoviesData: movies => dispatch(recentMovies(movies)),
-  handleUsers: users => dispatch(allUsers(users))
 })
 
 

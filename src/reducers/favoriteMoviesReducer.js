@@ -1,7 +1,7 @@
 export const favoriteReducer = (state = [], action) => {
   switch(action.type) {
-    case 'FAVORITE_MOVIES':
-      return // do something...
+    case 'ADD_FAVORITE':
+      return action.favMovieId
     default:
       return state
   }

@@ -38,7 +38,6 @@ class App extends Component {
             render={({ match }) => {
               const id = match.params;
               const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(id.id))
-              console.log(id)
               return movie && <Movie movie={movie} />
             }}
             />
@@ -60,7 +59,7 @@ export const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleMoviesData: movies => dispatch(recentMovies(movies)),
+  handleMoviesData: movies => dispatch(recentMovies(movies))
 })
 
 

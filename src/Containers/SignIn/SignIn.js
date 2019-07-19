@@ -4,7 +4,7 @@ import { signIn } from '../../actions';
 import { fetchUser } from '../../apiCalls'
 
 
-class SignIn extends Component {
+export class SignIn extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,10 +23,10 @@ class SignIn extends Component {
     fetchUser({email: this.state.email, password: this.state.password})
       .then(response => {
         if (response.data === undefined) {
-          this.setState({error: 'Incorrect Email/Password'})
+          this.handleSettingError()
         } else {
-        this.props.signUserIn(response.data)
-        this.handleResetError()
+          this.props.signUserIn(response.data)
+          this.handleResetError()
       }})
       .catch(error => this.setState({error: error.message}))
     this.handleResetInputs()
@@ -41,6 +41,10 @@ class SignIn extends Component {
 
   handleResetError = () => {
     this.setState({error: null})
+  }
+
+  handleSettingError = () => {
+    this.setState({error: 'Incorrect Email/Password'})
   }
   render() {
     return (
@@ -69,7 +73,7 @@ class SignIn extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signUserIn: (user) => dispatch( signIn(user) )
 })
 

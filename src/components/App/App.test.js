@@ -13,6 +13,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 
+<<<<<<< HEAD
+describe('App', () => {
+  it('should leave the the hell alone', () => {
+    //crazy
+  })
+})
+=======
 describe.skip('App', ()=> {
 
   it('should match the snapshot', ()=> {
@@ -21,3 +28,4 @@ describe.skip('App', ()=> {
   }) 
 
 });
+>>>>>>> 0cc9468affde138ffc38ad22691a248259ae17ad

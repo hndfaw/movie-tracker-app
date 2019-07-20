@@ -31,6 +31,8 @@
   width: 100vw;
 }
 
+
+
 .App-header-login {
   display: flex;
   align-items: center;
@@ -77,3 +79,15 @@ footer {
   width: 100vw;
 }
 
+.footer {
+  background: black;
+  width: 100vw;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.466);
+}

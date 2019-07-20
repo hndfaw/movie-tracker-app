@@ -22,6 +22,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        
         <Switch>
           <Route exact path='/'
             render={() => (
@@ -32,6 +33,9 @@ class App extends Component {
                 </header>
                 <main className="App-body">
                   <MovieContainer />
+                  <footer className="footer">
+                    <p className="footer-text">Powered by TMDB</p>
+                  </footer>
                 </main>
               </>
             )} 
@@ -59,9 +63,6 @@ class App extends Component {
           )}
           />
         </Switch>
-        {/* <footer className="footer">
-          <p>Powered by TMDB</p>
-        </footer> */}
       </div>
     );
   }

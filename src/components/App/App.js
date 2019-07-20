@@ -42,6 +42,9 @@ class App extends Component {
           <Route exact path='/login'
             render={() => (
               <>
+              <header className="App-header-login">
+                  <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
+                </header>
             <SignUpForm />
             <img src={require("../../images/login-background.jpeg")} className='background-image' alt="movie"/>
               </>

@@ -53,29 +53,33 @@ export class SignIn extends Component {
     return (
       <div className="signin-container">
         <form className="signin-form">
-        {this.state.error && <h2>{this.state.error}</h2>}
+        <h2 className="sigin-header">Sign In</h2>
+        <div className="input-btn-container">
+          <div className="input-container">
+          <label htmlFor="signIn-email">Email</label>
+          <input 
+            type="email" 
+            name="email" 
+            value={this.state.email} 
+            id="signIn-email" 
+            onChange={(e) => this.handleInput(e)}/>
+          </div>
+          <div className="input-container">
+            <label htmlFor="signIn-password">Password</label>
+            <input
+              type="text"
+              name="password"
+              value={this.state.password}
+              id="signIn-password"
+              onChange={(e) => this.handleInput(e)}/>
+          </div>
+          {this.state.error ? <p className="error-msg">{this.state.error}</p> : <p className="error-msg"></p>}
 
-        <label htmlFor="signIn-email">Email</label>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          name="email" 
-          value={this.state.email} 
-          id="signIn-email" 
-          onChange={(e) => this.handleInput(e)}/>
-          
+          <button className="signin-btn"
+          onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
 
-        <label htmlFor="signIn-password">Password
-        <input
-          type="text"
-          placeholder="Password"
-          name="password"
-          value={this.state.password}
-          id="signIn-password"
-          onChange={(e) => this.handleInput(e)}/>
-          </label>
-        <button
-        onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
+      </div>
+      
       </form>
       </div>
       

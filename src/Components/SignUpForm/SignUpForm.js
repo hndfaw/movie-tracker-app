@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import SignIn from '../../Containers/SignIn/SignIn';
 import SignUp from '../../Containers/SignUp/SignUp';
 import { connect } from 'react-redux';
+import './signupform.css'
 
 
 class SignUpForm extends Component {
@@ -23,10 +24,8 @@ class SignUpForm extends Component {
   render() {
     return (
         <section>
-          {/* <div>
             <button onClick={this.toggleSignInAndUp} name="sign-in">Sign In</button>
-            <button onClick={this.toggleSignInAndUp} name="sign-up">Sign Up</button>
-          </div> */}
+            <button className="switch-to-signup-btn" onClick={this.toggleSignInAndUp} name="sign-up">Sign Up</button>
           {this.state.signIn && <SignIn />}
           {this.state.signUp && <SignUp />}
         </section>

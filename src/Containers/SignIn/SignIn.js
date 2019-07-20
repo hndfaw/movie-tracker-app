@@ -54,22 +54,26 @@ export class SignIn extends Component {
       <div className="signin-container">
         <form className="signin-form">
         {this.state.error && <h2>{this.state.error}</h2>}
+
         <label htmlFor="signIn-email">Email</label>
         <input 
           type="email" 
-          placeholder="Enter Email Here" 
+          placeholder="Email" 
           name="email" 
           value={this.state.email} 
           id="signIn-email" 
           onChange={(e) => this.handleInput(e)}/>
-        <label htmlFor="signIn-password">Password</label>
+          
+
+        <label htmlFor="signIn-password">Password
         <input
           type="text"
-          placeholder-="Enter Password Here"
+          placeholder="Password"
           name="password"
           value={this.state.password}
           id="signIn-password"
           onChange={(e) => this.handleInput(e)}/>
+          </label>
         <button
         onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
       </form>

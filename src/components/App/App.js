@@ -40,7 +40,12 @@ class App extends Component {
             )} 
           />
           <Route exact path='/login'
-            render={() => <SignUpForm />}
+            render={() => (
+              <>
+            <SignUpForm />
+            <img src={require("../../images/login-background.jpeg")} className='background-image' alt="movie"/>
+              </>
+              )}
           />
           <Route exact path='/movie/:id' 
             render={({ match }) => {

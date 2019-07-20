@@ -1,11 +1,12 @@
-export const logInReducer = (state = {loggedIn: false}, action) => {
+let currentUser = {loggedIn: false, userDetail: {}}
+
+export const logInReducer = (state = currentUser, action) => {
   switch(action.type) {
     case 'SIGN_IN':
-      const userDetail = {
-        loggedIn: true,
-        user: action.userData
-      }
-      return userDetail 
+        return Object.assign({}, {
+          loggedIn: true,
+          userDetail: action.userData
+        })
     default:
       return state
   }

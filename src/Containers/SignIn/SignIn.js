@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
 import { fetchUser } from '../../apiCalls'
-import { getFavorites } from '../../Thunks/favoriteThunk'
+import { getFavorites } from '../../Thunks/favoriteThunk';
+import './signin.css';
 
 
 export class SignIn extends Component {
@@ -50,27 +51,38 @@ export class SignIn extends Component {
   }
   render() {
     return (
-      <form >
-        {this.state.error && <h2>{this.state.error}</h2>}
-        <label htmlFor="signIn-email">Email</label>
-        <input 
-          type="email" 
-          placeholder="Enter Email Here" 
-          name="email" 
-          value={this.state.email} 
-          id="signIn-email" 
-          onChange={(e) => this.handleInput(e)}/>
-        <label htmlFor="signIn-password">Password</label>
-        <input
-          type="text"
-          placeholder-="Enter Password Here"
-          name="password"
-          value={this.state.password}
-          id="signIn-password"
-          onChange={(e) => this.handleInput(e)}/>
-        <button
-        onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
+      <div className="signin-container">
+        <form className="signin-form">
+        <h2 className="sigin-header">Sign In</h2>
+        <div className="input-btn-container">
+          <div className="input-container">
+          <label htmlFor="signIn-email">Email</label>
+          <input 
+            type="email" 
+            name="email" 
+            value={this.state.email} 
+            id="signIn-email" 
+            onChange={(e) => this.handleInput(e)}/>
+          </div>
+          <div className="input-container">
+            <label htmlFor="signIn-password">Password</label>
+            <input
+              type="text"
+              name="password"
+              value={this.state.password}
+              id="signIn-password"
+              onChange={(e) => this.handleInput(e)}/>
+          </div>
+          {this.state.error ? <p className="error-msg">{this.state.error}</p> : <p className="error-msg"></p>}
+
+          <button className="signin-btn"
+          onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
+
+      </div>
+      
       </form>
+      </div>
+      
     )
   }
 }

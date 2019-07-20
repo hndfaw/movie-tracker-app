@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import Movie from '../../Containers/Movie/Movie'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
@@ -10,29 +10,46 @@ import { connect } from 'react-redux';
 
 class App extends Component {
 
-
    componentDidMount() {
-
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
-    // fetchGenre().then(data => console.log(data.genres))
   }
 
   render() {
+    const user = this.props.currentUser;
+    const headerLink = !user.loggedIn ? 'Login' : `Welcome, ${user.userDetail.name.toUpperCase()}!`
+
+
     return (
       <div className="App">
-       <img src={require("../../images/Cinema.jpg")} className='background-image' alt="movie"/>
-        <header className="App-header">
-          <h1>MOVIE TRACKER</h1>
-        </header>
+        
         <Switch>
           <Route exact path='/'
             render={() => (
               <>
-                <SignUpForm />
-                <MovieContainer />
+                <header className="App-header">
+                  <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
+                  <NavLink  to='/login' className="login-name">{headerLink}</NavLink>
+                </header>
+                <main className="App-body">
+                  <MovieContainer />
+                  <footer className="footer">
+                    <p className="footer-text">Powered by TMDB</p>
+                  </footer>
+                </main>
               </>
             )} 
+          />
+          <Route exact path='/login'
+            render={() => (
+              <>
+              <header className="App-header-login">
+                  <NavLink to='/' className="logo logo-signup">MOVIE <span className="logo-tracker">TRACKER</span></NavLink>
+                </header>
+            <SignUpForm />
+            <img src={require("../../images/login-background.jpeg")} className='background-image' alt="movie"/>
+              </>
+              )}
           />
           <Route exact path='/movie/:id' 
             render={({ match }) => {
@@ -46,16 +63,14 @@ class App extends Component {
           )}
           />
         </Switch>
-        <footer>
-          <p>Powered by TMDB</p>
-        </footer>
       </div>
     );
   }
 }
 
 export const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  currentUser: state.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -16,7 +16,7 @@ export const addFavorite = (body) => {
         dispatch(hasErrored('Error Adding Favorite'))
       }
       const newFavorite = await response.json()
-      dispatch(addFavMovie(newFavorite))
+      dispatch(addFavMovie(newFavorite.id))
     }
     catch {
       dispatch(hasErrored('Error Adding Favorite'))
@@ -34,7 +34,6 @@ export const getFavorites = id => {
       }
       const favoriteMovies = await response.json()
       dispatch(getFavoriteMovies(favoriteMovies))
-      console.log(favoriteMovies)
     }
     catch(error) {
 

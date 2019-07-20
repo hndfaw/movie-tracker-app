@@ -24,8 +24,9 @@ class SignUpForm extends Component {
   render() {
     return (
         <section>
-            <button onClick={this.toggleSignInAndUp} name="sign-in">Sign In</button>
-            <button className="switch-to-signup-btn" onClick={this.toggleSignInAndUp} name="sign-up">Sign Up</button>
+            {!this.state.signIn && <button className="switch-to-signup-btn" onClick={this.toggleSignInAndUp} name="sign-in">Sign In</button>}
+            {!this.state.signUp && <button className="switch-to-signup-btn" onClick={this.toggleSignInAndUp} name="sign-up">Sign Up</button>}
+
           {this.state.signIn && <SignIn />}
           {this.state.signUp && <SignUp />}
         </section>

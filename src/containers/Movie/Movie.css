@@ -19,9 +19,6 @@
 }
 
 .add-fav-btn {
-  /* position: absolute;
-  bottom: 0;
-  right: 0; */
   width: 180px;
   height: 20px;
   border: none;
@@ -32,7 +29,7 @@
 }
 
 .add-fav-btn:hover {
-  background: rgba(255, 255, 255, 0.835);
+  background: #01D277;
 }
 
 .movie-detail-container {

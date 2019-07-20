@@ -23,10 +23,10 @@ class SignUpForm extends Component {
   render() {
     return (
         <section>
-          <div>
+          {/* <div>
             <button onClick={this.toggleSignInAndUp} name="sign-in">Sign In</button>
             <button onClick={this.toggleSignInAndUp} name="sign-up">Sign Up</button>
-          </div>
+          </div> */}
           {this.state.signIn && <SignIn />}
           {this.state.signUp && <SignUp />}
         </section>

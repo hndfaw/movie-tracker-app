@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
 import { fetchUser } from '../../apiCalls'
-import { getFavorites } from '../../Thunks/favoriteThunk'
+import { getFavorites } from '../../Thunks/favoriteThunk';
+import './signin.css';
 
 
 export class SignIn extends Component {
@@ -50,7 +51,8 @@ export class SignIn extends Component {
   }
   render() {
     return (
-      <form >
+      <div className="signin-container">
+        <form className="signin-form">
         {this.state.error && <h2>{this.state.error}</h2>}
         <label htmlFor="signIn-email">Email</label>
         <input 
@@ -71,6 +73,8 @@ export class SignIn extends Component {
         <button
         onClick={(e) => this.handleUserSignIn(e)}>Sign In</button>
       </form>
+      </div>
+      
     )
   }
 }

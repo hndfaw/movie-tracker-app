@@ -41,6 +41,10 @@ footer {
   padding-right: 32px;
 }
 
+.login-name:hover {
+  color: #01D277
+}
+
 .logo {
   color: #01D277;
   padding-left: 20px;

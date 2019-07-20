@@ -1,14 +1,4 @@
 .genre-container {
-  /* border: solid 2px;
-  color: white;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 1% 0px; */
-
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(220px, 1fr)); */
-  display: flex;
-  flex-wrap: wrap
-
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px, 1fr));
 }

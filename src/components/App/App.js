@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import Movie from '../../Containers/Movie/Movie'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
@@ -29,10 +29,13 @@ class App extends Component {
           <Route exact path='/'
             render={() => (
               <>
-                <SignUpForm />
+                <NavLink  to='/login' className="nav">Login</NavLink>
                 <MovieContainer />
               </>
             )} 
+          />
+          <Route exact path='/login'
+            render={() => <SignUpForm />}
           />
           <Route exact path='/movie/:id' 
             render={({ match }) => {

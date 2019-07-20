@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import SignIn from '../../Containers/SignIn/SignIn';
 import SignUp from '../../Containers/SignUp/SignUp';
+import { connect } from 'react-redux';
 
 class SignUpForm extends Component {
   constructor() {
@@ -11,7 +12,14 @@ class SignUpForm extends Component {
     }
   }
 
+  componentDidMount() {
+    const userLoggedIn = this.props.currentUser.loggedIn
+    console.log(userLoggedIn )
+  }
+
   toggleSignInAndUp = (e) => {
+    const userLoggedIn = this.props.currentUser.loggedIn
+    console.log(userLoggedIn )
     e.target.name === 'sign-in' ?
     this.setState({signIn: true, signUp: false}) :
     this.setState({signIn: false, signUp: true})
@@ -32,6 +40,9 @@ class SignUpForm extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  currentUser: state.currentUser
+})
 
 
-export default SignUpForm;
+export default connect(mapStateToProps, null)(SignUpForm);

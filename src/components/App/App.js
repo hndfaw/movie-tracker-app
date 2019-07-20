@@ -21,16 +21,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <img src={require("../../images/Cinema.jpg")} className='background-image' alt="movie"/>
+       {/* <img src={require("../../images/Cinema.jpg")} className='background-image' alt="movie"/>
         <header className="App-header">
           <h1>MOVIE TRACKER</h1>
-        </header>
+        </header> */}
         <Switch>
           <Route exact path='/'
             render={() => (
               <>
-                <NavLink  to='/login' className="nav">Login</NavLink>
-                <MovieContainer />
+                <header className="App-header">
+                  <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
+                  <NavLink  to='/login' className="login-name">Login</NavLink>
+                </header>
+                <main className="App-body">
+                  <MovieContainer />
+                </main>
               </>
             )} 
           />
@@ -50,7 +55,7 @@ class App extends Component {
           />
         </Switch>
         <footer>
-          <p>Powered by TMDB</p>
+          {/* <p>Powered by TMDB</p> */}
         </footer>
       </div>
     );

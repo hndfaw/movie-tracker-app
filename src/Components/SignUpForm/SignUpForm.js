@@ -8,7 +8,7 @@ class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
-      signIn: false,
+      signIn: true,
       signUp: false,
     }
   }

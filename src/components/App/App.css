@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -13,19 +19,38 @@
 }
 
 .App-header {
-  min-height: 20vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  background-image: linear-gradient(#141414, #2c2b2b);
+  height: 50px;
+  font-size: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
 }
 
 footer {
   color: white;
 }
 
+.login-name {
+  color: #fff;
+  text-decoration: none;
+  padding-right: 32px;
+}
 
+.logo {
+  color: #01D277;
+  padding-left: 20px;
+}
 
+.logo-tracker {
+  color: #fff;
+}
 
+.App-body {
+  margin-top: 50px;
+  width: 100vw;
+}

@@ -10,14 +10,16 @@ import { connect } from 'react-redux';
 
 class App extends Component {
 
-
    componentDidMount() {
-
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
   }
 
   render() {
+    const user = this.props.currentUser;
+    const headerLink = !user.loggedIn ? 'Login' : `Welcome, ${user.userDetail.name.toUpperCase()}!`
+
+
     return (
       <div className="App">
         <Switch>
@@ -26,7 +28,7 @@ class App extends Component {
               <>
                 <header className="App-header">
                   <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
-                  <NavLink  to='/login' className="login-name">Login</NavLink>
+                  <NavLink  to='/login' className="login-name">{headerLink}</NavLink>
                 </header>
                 <main className="App-body">
                   <MovieContainer />
@@ -57,16 +59,17 @@ class App extends Component {
           )}
           />
         </Switch>
-        <footer>
+        {/* <footer className="footer">
           <p>Powered by TMDB</p>
-        </footer>
+        </footer> */}
       </div>
     );
   }
 }
 
 export const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  currentUser: state.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -5,7 +5,7 @@ export const logInReducer = (state = currentUser, action) => {
     case 'SIGN_IN':
         return Object.assign({}, {
           loggedIn: true,
-          user: action.userData
+          userDetail: action.userData
         })
     default:
       return state

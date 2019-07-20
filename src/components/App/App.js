@@ -15,16 +15,11 @@ class App extends Component {
 
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
-    // fetchGenre().then(data => console.log(data.genres))
   }
 
   render() {
     return (
       <div className="App">
-       {/* <img src={require("../../images/Cinema.jpg")} className='background-image' alt="movie"/>
-        <header className="App-header">
-          <h1>MOVIE TRACKER</h1>
-        </header> */}
         <Switch>
           <Route exact path='/'
             render={() => (
@@ -43,7 +38,7 @@ class App extends Component {
             render={() => (
               <>
               <header className="App-header-login">
-                  <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
+                  <NavLink to='/' className="logo logo-signup">MOVIE <span className="logo-tracker">TRACKER</span></NavLink>
                 </header>
             <SignUpForm />
             <img src={require("../../images/login-background.jpeg")} className='background-image' alt="movie"/>
@@ -63,7 +58,7 @@ class App extends Component {
           />
         </Switch>
         <footer>
-          {/* <p>Powered by TMDB</p> */}
+          <p>Powered by TMDB</p>
         </footer>
       </div>
     );

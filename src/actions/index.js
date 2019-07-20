@@ -3,9 +3,9 @@ export const signIn = (userData) => ({
   userData
 })
 
-export const favoriteMovie = (movie) => ({
+export const getFavoriteMovies = (movies) => ({
   type: 'FAVORITE_MOVIES',
-  movie
+  movies
 })
 
 export const recentMovies = (movies) => ({
@@ -16,5 +16,10 @@ export const recentMovies = (movies) => ({
 export const addFavMovie = (favMovieId) => ({
   type: 'ADD_FAVORITE',
   favMovieId
+})
+
+export const hasErrored = errorMsg => ({
+  type: 'HAS_ERRORED',
+  errorMsg
 })
 

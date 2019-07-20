@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../actions';
 import { fetchUser } from '../../apiCalls'
+import { getFavorites } from '../../Thunks/favoriteThunk'
 
 
 export class SignIn extends Component {
@@ -26,6 +27,7 @@ export class SignIn extends Component {
           this.handleSettingError()
         } else {
           this.props.signUserIn(response.data)
+          this.props.getFavorites(response.data.id)
           this.handleResetError()
       }})
       .catch(error => this.setState({error: error.message}))
@@ -74,7 +76,8 @@ export class SignIn extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  signUserIn: (user) => dispatch( signIn(user) )
+  signUserIn: (user) => dispatch( signIn(user) ),
+  getFavorites: (id) => dispatch(getFavorites(id))
 })
 
 export default connect(null, mapDispatchToProps)(SignIn);

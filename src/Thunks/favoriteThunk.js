@@ -1,8 +1,8 @@
-import { favoriteMovie, addFavMovie } from '../actions/index'
+import { getFavoriteMovies, addFavMovie, hasErrored } from '../actions/index'
 
 export const addFavorite = (body) => {
   return async dispatch => {
-    const url = 'http://localhost:3000/api/users/favorites/new';
+    const url = 'http://localhost:3000/api/users/favorites/new/';
     const options = {
       method: 'POST',
       headers: {
@@ -13,12 +13,30 @@ export const addFavorite = (body) => {
     try {
       const response = await fetch(url, options)
       if(!response.ok) {
-        console.log('Error')
+        dispatch(hasErrored('Error Adding Favorite'))
       }
       const newFavorite = await response.json()
       dispatch(addFavMovie(newFavorite))
     }
     catch {
+      dispatch(hasErrored('Error Adding Favorite'))
+    }
+  }
+}
+
+export const getFavorites = id => {
+  return async dispatch => {
+    const url = `http://localhost:3000/api/users/${id}/favorites`
+    try {
+      const response = await fetch(url)
+      if (!response.ok) {
+        dispatch(hasErrored('Errored Fetching Favorites'))
+      }
+      const favoriteMovies = await response.json()
+      dispatch(getFavoriteMovies(favoriteMovies))
+      console.log(favoriteMovies)
+    }
+    catch(error) {
 
     }
   }

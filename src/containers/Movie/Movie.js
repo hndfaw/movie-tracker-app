@@ -1,12 +1,9 @@
 import React from 'react';
-import { addFavMovie } from '../../actions'
 import { connect } from 'react-redux';
 import './Movie.css'
 import { addFavorite } from '..//../Thunks/favoriteThunk'
-
 const Movie = ({ movie, currentUser, handleClick }) => {
   const url = 'https://image.tmdb.org/t/p/w500'
-  console.log(movie)
   const checkIfLoggedIn = () => {
     if(currentUser.loggedIn) {
       const favMovie = {
@@ -17,7 +14,6 @@ const Movie = ({ movie, currentUser, handleClick }) => {
         release_date: movie.release_date,
         vote_average: movie.vote_average
       }
-      console.log(favMovie)
       handleClick(favMovie);
     } else {
       console.log('Working')

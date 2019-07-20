@@ -25,6 +25,7 @@ const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }
   return (
 
     <article className='movie'>
+
       <div className="movie-detail-container">
         <div className='movie-info-card'>
           <h2>{movie.title}</h2>
@@ -33,6 +34,7 @@ const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }
           <h3>Rating: </h3><p>{movie.vote_average} out of 10</p>
         </div>
         <button onClick={e => checkIfLoggedIn()}>Add this movie to favorites</button>
+        <img src={url+movie.backdrop_path} alt='Movie poster' className="movie-backdrop"/>
       </div>
       
 

@@ -30,6 +30,7 @@ class App extends Component {
                 <header className="App-header">
                   <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
                   <NavLink  to='/login' className="login-name">{headerLink}</NavLink>
+                  {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>}
                 </header>
                 <main className="App-body">
                   <MovieContainer />

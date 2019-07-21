@@ -1,0 +1,15 @@
+.switch-to-signup-btn {
+  position: absolute;
+  right: 32px;
+  top: 16px;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.switch-to-signup-btn:hover {
+  color: #01D277;
+}

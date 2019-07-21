@@ -1,8 +1,6 @@
 .genre-container {
-  border: solid 2px;
-  color: white;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 1% 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px, 1fr));
+  background-image: linear-gradient(rgba(14, 14, 14, 0.609), #2c2b2b34);
+
 }

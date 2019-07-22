@@ -36,7 +36,7 @@ export const getFavorites = id => {
       dispatch(getFavoriteMovies(favoriteMovies))
     }
     catch(error) {
-
+      dispatch(hasErrored(error))
     }
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import Movie from '../../Containers/Movie/Movie'
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import './App.css';
 import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
@@ -29,6 +29,7 @@ class App extends Component {
               <>
                 <header className="App-header">
                   <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
+                  {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>}
                   <NavLink  to='/login' className="login-name">{headerLink}</NavLink>
                 </header>
                 <main className="App-body">
@@ -42,13 +43,16 @@ class App extends Component {
           />
           <Route exact path='/login'
             render={() => (
+              user.loggedIn ? (
+                <Redirect to="/"/>
+              ) : (
               <>
               <header className="App-header-login">
                   <NavLink to='/' className="logo logo-signup">MOVIE <span className="logo-tracker">TRACKER</span></NavLink>
                 </header>
             <SignUpForm />
             <img src={require("../../images/login-background.jpeg")} className='background-image' alt="movie"/>
-              </>
+              </>)
               )}
           />
           <Route exact path='/movie/:id' 
@@ -62,6 +66,10 @@ class App extends Component {
             <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
           )}
           />
+          <Route exact path="/favorites"
+            render={ ({match}) => {
+
+            }}/>
         </Switch>
       </div>
     );
@@ -70,7 +78,8 @@ class App extends Component {
 
 export const mapStateToProps = state => ({
   movies: state.movies,
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => ({

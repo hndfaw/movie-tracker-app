@@ -43,18 +43,14 @@ export class Movie extends Component {
           <button onClick={e => this.checkIfLoggedIn()}>Add this movie to favorites</button> }
           {!this.props.currentUser.loggedIn && <NavLink to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
         </div>
-           
         </div>
         
-  
         <img src={this.url+this.props.movie.backdrop_path} alt='Movie poster' className="movie-backdrop"/>
       </div>
-      {/* {currentUser.loggedIn && 
-      <button onClick={e => checkIfLoggedIn()}>Add this movie to favorites</button> }
-      {!currentUser.loggedIn && <NavLink to="/login">Sign in to Favorite</NavLink>}
-      <img src={url+movie.poster_path} alt='Movie poster' className="movie-poster"/> */}
+    <img src={this.url+this.props.movie.poster_path} alt='Movie poster' className="movie-poster"/>
     </article>
   )
+  
 }
 }
 

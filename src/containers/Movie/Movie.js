@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Movie.css'
 import { addFavorite, getFavorites } from '..//../Thunks/favoriteThunk'
+import { NavLink } from 'react-router-dom'
 const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }) => {
   const url = 'https://image.tmdb.org/t/p/w500'
   const checkIfLoggedIn = () => {
@@ -9,7 +10,7 @@ const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }
       console.log(movie)
       const favMovie = {
         movie_id: movie.id,
-        user_id: currentUser.user.id,
+        user_id: currentUser.userDetail.id,
         title: movie.title,
         poster_path: movie.poster_path,
         release_date: movie.release_date,
@@ -17,7 +18,7 @@ const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }
         overview: movie.overview
       }
       handleClick(favMovie);
-      getFavorites(currentUser.user.id)
+      getFavorites(currentUser.userDetail.id)
     } else {
       console.log('Working')
     }
@@ -31,10 +32,11 @@ const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }
         <h3>Description: </h3><p>{movie.overview}</p>
         <h3>Rating: </h3><p>{movie.vote_average} out of 10</p>
       </div>
-      <button onClick={e => checkIfLoggedIn()}>Add this movie to favorites</button>
+      {currentUser.loggedIn && 
+      <button onClick={e => checkIfLoggedIn()}>Add this movie to favorites</button> }
+      {!currentUser.loggedIn && <NavLink to="/login">Sign in to Favorite</NavLink>}
     </article>
   )
-  
 }
 
 

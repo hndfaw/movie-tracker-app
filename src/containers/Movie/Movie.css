@@ -68,3 +68,7 @@
   bottom: 100px;
   width: 600px;
 }
+
+.images-container {
+  display: flex;
+}

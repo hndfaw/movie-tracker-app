@@ -7,7 +7,7 @@ import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
 import { recentMovies } from '../../actions';
 import { connect } from 'react-redux';
-import { logOut } from '../../actions';
+import { logOut, toggleLogOutMenu } from '../../actions';
 
 class App extends Component {
 
@@ -17,17 +17,24 @@ class App extends Component {
   }
 
   logout = () => {
-    this.props.handleLogOut()
+    this.props.handleLogOut();
+    this.props.handleToggleLogOutMenu();
   }
+
+  toggleLogOutMenuFunc = () => {
+    this.props.currentUser.loggedIn && this.props.handleToggleLogOutMenu()
+    }
+  
 
   render() {
     const user = this.props.currentUser;
     const headerLink = !user.loggedIn ? 'Login' : `Welcome, ${user.userDetail.name.toUpperCase()}!`
-
+    const logOutStyle = this.props.logOutMenuOpen ? {display: 'flex'} : {display: 'none'}
+    console.log(this.props.logOutMenuOpen)
+    console.log(logOutStyle)
 
     return (
       <div className="App">
-        
         <Switch>
           <Route exact path='/'
             render={() => (
@@ -35,8 +42,11 @@ class App extends Component {
                 <header className="App-header">
                   <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
                   {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>}
-                  <NavLink  to='/login' className="login-name">{headerLink}</NavLink>
-                  <button onClick={this.logout}>Log Out</button>
+                  <NavLink  to='/login' onClick={this.toggleLogOutMenuFunc} className="login-name">{headerLink}</NavLink>
+                  <div className="logout-container" style={logOutStyle}>
+                    <button className="logout-btn" onClick={this.logout}>Log Out</button>
+                  </div>
+                  
                 </header>
                 <main className="App-body">
                   <MovieContainer />
@@ -85,12 +95,14 @@ class App extends Component {
 export const mapStateToProps = state => ({
   movies: state.movies,
   currentUser: state.currentUser,
-  favorites: state.favorites
+  favorites: state.favorites,
+  logOutMenuOpen: state.logOutMenuOpen
 })
 
 const mapDispatchToProps = dispatch => ({
   handleMoviesData: movies => dispatch(recentMovies(movies)),
-  handleLogOut: () => dispatch(logOut())
+  handleLogOut: () => dispatch(logOut()),
+  handleToggleLogOutMenu: () => dispatch(toggleLogOutMenu())
 })
 
 

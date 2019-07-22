@@ -18,3 +18,11 @@ export const hasErrored = errorMsg => ({
   errorMsg
 })
 
+export const logOut = () => ({
+  type: 'LOGOUT',
+})
+
+export const toggleLogOutMenu = () => ({
+  type: 'TOGGLE_LOGOUT_MENU'
+})
+

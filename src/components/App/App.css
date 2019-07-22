@@ -92,3 +92,42 @@ footer {
 .footer-text {
   color: rgba(255, 255, 255, 0.466);
 }
+
+.logout-container {
+  border-radius: 5px;
+  background-image: linear-gradient(#141414, #2c2b2b);
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  right: 25px;
+  top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logout-btn {
+  width: 70%;
+  height: 20px;
+  border-radius: 3px;
+  background: rgba(1, 210, 120, 0.753);
+  cursor: pointer;
+  outline: none;
+}
+
+.logout-btn:hover {
+background: #01D277;
+}
+
+.logout-arrow {
+  background-image: linear-gradient(#141414, #2c2b2b);
+
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -5px;
+  right: 9px;
+  transform: rotate(45deg);
+  z-index: -1;
+}

@@ -5,8 +5,13 @@ export const logInReducer = (state = currentUser, action) => {
     case 'SIGN_IN':
         return Object.assign({}, {
           loggedIn: true,
-          userDetail: action.userData
+          userDetail: action.userData,
         })
+    case 'LOGOUT':
+      return Object.assign({}, {
+        loggedIn: false,
+        userDetail: {},
+      })
     default:
       return state
   }

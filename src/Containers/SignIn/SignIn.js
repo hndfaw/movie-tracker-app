@@ -67,7 +67,7 @@ export class SignIn extends Component {
           <div className="input-container">
             <label htmlFor="signIn-password">Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               value={this.state.password}
               id="signIn-password"

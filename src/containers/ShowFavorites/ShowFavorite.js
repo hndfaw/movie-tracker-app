@@ -2,11 +2,11 @@ import React from 'react';
 import  MovieSnippet  from '../MovieSnippet/MovieSnippet'
 
 const ShowFavorites = ({favorites}) => {
-  const displayFavorites = favorites[0].map( movie => {
+  const displayFavorites = favorites.map( movie => {
     return <MovieSnippet 
       path={movie.poster_path} 
-      key={movie.id} 
-      id={movie.id}/>
+      key={movie.movie_id} 
+      id={movie.movie_id}/>
   })
   return (
     <section>

@@ -94,14 +94,13 @@ footer {
 }
 
 .logout-container {
-  /* border: 1px solid black; */
   border-radius: 5px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.979), rgba(255, 255, 255, 0.966));
+  background-image: linear-gradient(#141414, #2c2b2b);
   width: 200px;
   height: 100px;
   position: absolute;
   right: 25px;
-  top: 55px;
+  top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +112,11 @@ footer {
   width: 70%;
   height: 20px;
   border-radius: 3px;
-  background: #01D277;
+  background: rgba(1, 210, 120, 0.753);
   cursor: pointer;
   outline: none;
+}
+
+.logout-btn:hover {
+background: #01D277;
 }

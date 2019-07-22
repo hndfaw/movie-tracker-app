@@ -29,9 +29,8 @@ class App extends Component {
   render() {
     const user = this.props.currentUser;
     const headerLink = !user.loggedIn ? 'Login' : `Welcome, ${user.userDetail.name.toUpperCase()}!`
-    const logOutStyle = this.props.logOutMenuOpen ? {display: 'flex'} : {display: 'none'}
-    console.log(this.props.logOutMenuOpen)
-    console.log(logOutStyle)
+    const logOutStyle = this.props.logOutMenuOpen ? {display: 'flex'} : {display: 'flex'}
+
 
     return (
       <div className="App">

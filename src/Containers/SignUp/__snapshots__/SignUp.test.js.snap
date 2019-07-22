@@ -1,3 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignUp should match the snapshot 1`] = `ShallowWrapper {}`;
+exports[`SignUp should match the snapshot 1`] = `
+<div
+  className="signin-container"
+>
+  <form
+    className="signup-form"
+  >
+    <h2
+      className="sigin-header"
+    >
+      Sign Up
+    </h2>
+    <div
+      className="signup-input-btn-container"
+    >
+      <div
+        className="input-container"
+      >
+        <label
+          htmlFor="signup-name"
+        >
+          Name
+        </label>
+        <input
+          id="signup-name"
+          name="name"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="input-container"
+      >
+        <label
+          htmlFor="signup-email"
+        >
+          Email
+        </label>
+        <input
+          id="signup-email"
+          name="email"
+          onChange={[Function]}
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="input-container"
+      >
+        <label
+          htmlFor="signup-password-1"
+        >
+          Password
+        </label>
+        <input
+          id="signup-password-1"
+          name="password"
+          onChange={[Function]}
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="input-container"
+      >
+        <label
+          htmlFor="signup-password-2"
+        >
+          Re-Enter Password
+        </label>
+        <input
+          id="signup-password-2"
+          name="password2"
+          onChange={[Function]}
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        className="signup-btn"
+        onClick={[Function]}
+      >
+        Sign Up
+      </button>
+    </div>
+  </form>
+</div>
+`;

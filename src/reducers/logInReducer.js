@@ -7,6 +7,11 @@ export const logInReducer = (state = currentUser, action) => {
           loggedIn: true,
           userDetail: action.userData
         })
+    case 'LOGOUT':
+      return Object.assign({}, {
+        loggedIn: false,
+        userDetail: {}
+      })
     default:
       return state
   }

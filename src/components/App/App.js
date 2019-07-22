@@ -7,12 +7,17 @@ import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
 import { recentMovies } from '../../actions';
 import { connect } from 'react-redux';
+import { logOut } from '../../actions';
 
 class App extends Component {
 
    componentDidMount() {
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
+  }
+
+  logout = () => {
+    this.props.handleLogOut()
   }
 
   render() {
@@ -31,6 +36,7 @@ class App extends Component {
                   <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
                   {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>}
                   <NavLink  to='/login' className="login-name">{headerLink}</NavLink>
+                  <button onClick={this.logout}>Log Out</button>
                 </header>
                 <main className="App-body">
                   <MovieContainer />
@@ -83,7 +89,8 @@ export const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleMoviesData: movies => dispatch(recentMovies(movies))
+  handleMoviesData: movies => dispatch(recentMovies(movies)),
+  handleLogOut: () => dispatch(logOut())
 })
 
 

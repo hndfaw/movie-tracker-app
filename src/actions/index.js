@@ -23,3 +23,7 @@ export const hasErrored = errorMsg => ({
   errorMsg
 })
 
+export const logOut = () => ({
+  type: 'LOGOUT',
+})
+

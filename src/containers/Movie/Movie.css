@@ -34,7 +34,7 @@
 }
 
 .movie-detail-container {
-  background-image: linear-gradient( rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  background-image: linear-gradient( rgba(0, 0, 0, 0.945), rgba(0, 0, 0, 0.829));
   width: 100%;
 }
 

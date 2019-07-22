@@ -8,6 +8,7 @@ import SignUpForm from '../SignUpForm/SignUpForm'
 import { recentMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { logOut, toggleLogOutMenu } from '../../actions';
+import ShowFavorites from '../../Containers/ShowFavorites/ShowFavorite'
 
 class App extends Component {
 
@@ -77,14 +78,14 @@ class App extends Component {
               return movie && <Movie movie={movie} />
             }}
             />
+            <Route exact path="/favorites"
+              render={ ({match}) => {
+                return <ShowFavorites favorites={this.props.favorites}/>
+              }}/>
           <Route render={() => (
             <h1>THE PAGE YOU TRIED TO ACCESS DOES NOT EXIST!</h1>
           )}
           />
-          <Route exact path="/favorites"
-            render={ ({match}) => {
-
-            }}/>
         </Switch>
       </div>
     );

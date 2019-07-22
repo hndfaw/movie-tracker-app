@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Snippet should match snapshot 1`] = `
+<Link
+  className="snippet"
+  to="/movie/1"
+>
+  <img
+    alt="movie snippet"
+    className="poster"
+    src="https://image.tmdb.org/t/p/w500/w9kR8qbmQ01HwnvK4alvnQ2ca0L.jpg"
+  />
+</Link>
+`;

@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Should match Logged In Snapshot 1`] = `
+<article
+  className="movie"
+>
+  <div
+    className="movie-detail-container"
+  >
+    <div
+      className="movie-info-card"
+    >
+      <h2
+        className="movie-title"
+      >
+        The Adventure of TronKat
+      </h2>
+      <p>
+        TronKat is the worlds greatest gamer. But when the world needed him most he vanished.
+      </p>
+      <div
+        className="date-rating-container"
+      >
+        <p
+          className="content-p"
+        >
+          Rating:
+          <span
+            className="content-data"
+          >
+             
+            9.9
+             / 10
+          </span>
+        </p>
+        <p
+          className="content-p"
+        >
+          Release Date:
+          <span
+            className="content-data"
+          >
+             
+            2019-01-26
+          </span>
+        </p>
+        <button
+          onClick={[Function]}
+        >
+          Add this movie to favorites
+        </button>
+      </div>
+    </div>
+    <img
+      alt="Movie poster"
+      className="movie-backdrop"
+      src="https://image.tmdb.org/t/p/w500undefined"
+    />
+  </div>
+</article>
+`;
+
+exports[`Movie Should match Logged Out Snapshot 1`] = `
+<article
+  className="movie"
+>
+  <div
+    className="movie-detail-container"
+  >
+    <div
+      className="movie-info-card"
+    >
+      <h2
+        className="movie-title"
+      >
+        The Adventure of TronKat
+      </h2>
+      <p>
+        TronKat is the worlds greatest gamer. But when the world needed him most he vanished.
+      </p>
+      <div
+        className="date-rating-container"
+      >
+        <p
+          className="content-p"
+        >
+          Rating:
+          <span
+            className="content-data"
+          >
+             
+            9.9
+             / 10
+          </span>
+        </p>
+        <p
+          className="content-p"
+        >
+          Release Date:
+          <span
+            className="content-data"
+          >
+             
+            2019-01-26
+          </span>
+        </p>
+        <NavLink
+          className="movie-login-link"
+          to="/login"
+        >
+          Sign in to Favorite
+        </NavLink>
+      </div>
+    </div>
+    <img
+      alt="Movie poster"
+      className="movie-backdrop"
+      src="https://image.tmdb.org/t/p/w500undefined"
+    />
+  </div>
+</article>
+`;

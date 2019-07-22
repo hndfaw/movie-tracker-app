@@ -1,59 +1,81 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './Movie.css'
-import { addFavorite, getFavorites } from '..//../Thunks/favoriteThunk'
-const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }) => {
-  const url = 'https://image.tmdb.org/t/p/w500'
-  const checkIfLoggedIn = () => {
-    if(currentUser.loggedIn) {
-      console.log(movie)
+import { addFavorite, getFavorites, removeFavorite } from '..//../Thunks/favoriteThunk'
+import { NavLink } from 'react-router-dom'
+export class Movie extends Component {
+  constructor({ movie, currentUser, handleClick, getFavorites, favoriteMovies, favorites, removeFavorite }){
+    super({ movie, currentUser, handleClick, getFavorites, favoriteMovies, favorites, removeFavorite });
+    this.url = 'https://image.tmdb.org/t/p/w500'
+  }
+
+  checkIfLoggedIn = () => {
+    if(this.props.currentUser.loggedIn) {
+      console.log(this.props.currentUser)
+      console.log(this.props.movie)
       const favMovie = {
-        movie_id: movie.id,
-        user_id: currentUser.user.id,
-        title: movie.title,
-        poster_path: movie.poster_path,
-        release_date: movie.release_date,
-        vote_average: movie.vote_average,
-        overview: movie.overview
+        movie_id: this.props.movie.id,
+        user_id: this.props.currentUser.userDetail.id,
+        title: this.props.movie.title,
+        poster_path: this.props.movie.poster_path,
+        release_date: this.props.movie.release_date,
+        vote_average: this.props.movie.vote_average,
+        overview: this.props.movie.overview
       }
-      handleClick(favMovie);
-      getFavorites(currentUser.user.id)
+      if(!this.checkForFavoritedMovie(this.props.movie)) {
+        this.props.handleClick(favMovie, this.props.currentUser.userDetail.id);
+        this.props.getFavorites(this.props.currentUser.userDetail.id)
+      }
     } else {
       console.log('Working')
     }
   }
-  return (
+  checkForFavoritedMovie = movie => {
+    const result = this.props.favorites.find(favMovie => favMovie.movie_id === movie.id)
+    if(result !== undefined) {
+      return true
+    } else {
+      return false
+    }
+  }
 
-    <article className='movie'>
 
-      <div className="movie-detail-container">
-        <div className='movie-info-card'>
-          <h2 className="movie-title">{movie.title}</h2>
-          <p>{movie.overview}</p>
-        <div className="date-rating-container">
-          <p className="content-p">Rating:<span className="content-data"> {movie.vote_average} / 10</span></p>
-          <p className="content-p">Release Date:<span className="content-data"> {movie.release_date}</span></p>
-          <button className="add-fav-btn" onClick={e => checkIfLoggedIn()}>Add this movie to favorites</button>
+  render() {
+    return (
+      <article className='movie'>
+        <div className="movie-detail-container">
+          <div className='movie-info-card'>
+            <h2 className="movie-title">{this.props.movie.title}</h2>
+            <p>{this.props.movie.overview}</p>
+          <div className="date-rating-container">
+            <p className="content-p">Rating:<span className="content-data"> {this.props.movie.vote_average} / 10</span></p>
+            <p className="content-p">Release Date:<span className="content-data"> {this.props.movie.release_date}</span></p>
+            {this.props.currentUser.loggedIn && !this.checkForFavoritedMovie(this.props.movie) &&
+            <button onClick={e => this.checkIfLoggedIn()}>Add this movie to favorites</button> }
+            {this.props.currentUser.loggedIn && this.checkForFavoritedMovie(this.props.movie) && 
+            <button onClick={() => this.props.removeFavorite(this.props.currentUser.userDetail.id, this.props.movie.id)}>Remove this movie from favorites</button>}
+            {!this.props.currentUser.loggedIn && <NavLink to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
+          </div>
+          </div>
+
+          <img src={this.url+this.props.movie.backdrop_path} alt='Movie poster' className="movie-backdrop"/>
         </div>
-        </div>
-        
-        <img src={url+movie.backdrop_path} alt='Movie poster' className="movie-backdrop"/>
-      </div>
-
-    <img src={url+movie.poster_path} alt='Movie poster' className="movie-poster"/>
-    </article>
-  )
-  
+      <img src={this.url+this.props.movie.poster_path} alt='Movie poster' className="movie-poster"/>
+      </article>
+    )
+    }
 }
 
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   currentUser: state.currentUser,
+  favorites: state.favorites[0]
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleClick: (favMovie) => dispatch(addFavorite(favMovie)),
-  getFavorites: (favoriteMovies) => dispatch(getFavorites(favoriteMovies))
+  handleClick: (favMovie, userId) => dispatch(addFavorite(favMovie, userId)),
+  getFavorites: (favoriteMovies) => dispatch(getFavorites(favoriteMovies)),
+  removeFavorite: (userId, movieId) => dispatch(removeFavorite(userId, movieId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

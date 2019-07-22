@@ -13,11 +13,6 @@ export const recentMovies = (movies) => ({
   movies
 })
 
-export const addFavMovie = (favMovieId) => ({
-  type: 'ADD_FAVORITE',
-  favMovieId
-})
-
 export const hasErrored = errorMsg => ({
   type: 'HAS_ERRORED',
   errorMsg

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './Movie.css'
-import { addFavorite, getFavorites } from '..//../Thunks/favoriteThunk'
+import { addFavorite, getFavorites, removeFavorite } from '..//../Thunks/favoriteThunk'
 import { NavLink } from 'react-router-dom'
 export class Movie extends Component {
-  constructor({ movie, currentUser, handleClick, getFavorites, favoriteMovies }){
-    super({ movie, currentUser, handleClick, getFavorites, favoriteMovies });
+  constructor({ movie, currentUser, handleClick, getFavorites, favoriteMovies, favorites }){
+    super({ movie, currentUser, handleClick, getFavorites, favoriteMovies, favorites });
     this.url = 'https://image.tmdb.org/t/p/w500'
   }
 
@@ -22,46 +22,63 @@ export class Movie extends Component {
         vote_average: this.props.movie.vote_average,
         overview: this.props.movie.overview
       }
+      if(!this.checkForFavoritedMovie(movie)) {
+        handleClick(favMovie, this.props.currentUser.userDetail.id);
+        getFavorites(this.props.currentUser.userDetail.id)
+      }
+    } else {
+      console.log('Working')
+    }
+  }
+  checkForFavoritedMovie = movie => {
+    const result = this.props.favorites.find(favMovie => favMovie.movie_id === movie.id)
+    if(result !== undefined) {
+      return true
+    } else {
+      return false
+    }
+  }
       this.props.handleClick(favMovie);
       this.props.getFavorites(this.props.currentUser.userDetail.id)
     }
   }
 
   render() {
-  return (
+    return (
+      <article className='movie'>
+        <div className="movie-detail-container">
+          <div className='movie-info-card'>
+            <h2 className="movie-title">{this.props.movie.title}</h2>
+            <p>{this.props.movie.overview}</p>
+          <div className="date-rating-container">
+            <p className="content-p">Rating:<span className="content-data"> {this.props.movie.vote_average} / 10</span></p>
+            <p className="content-p">Release Date:<span className="content-data"> {this.props.movie.release_date}</span></p>
+            {this.props.currentUser.loggedIn && !this.checkForFavoritedMovie(movie) &&
+            <button onClick={e => this.checkIfLoggedIn()}>Add this movie to favorites</button> }
+            {this.props.currentUser.loggedIn && this.checkForFavoritedMovie(movie) && 
+            <button onClick={() => removeFavorite(this.props.currentUser.userDetail.id, this.props.movie.id)}>Remove this movie from favorites</button>}
+            {!this.props.currentUser.loggedIn && <NavLink to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
+          </div>
+          </div>
 
-    <article className='movie'>
-
-      <div className="movie-detail-container">
-        <div className='movie-info-card'>
-          <h2 className="movie-title">{this.props.movie.title}</h2>
-          <p>{this.props.movie.overview}</p>
-        <div className="date-rating-container">
-          <p className="content-p">Rating:<span className="content-data"> {this.props.movie.vote_average} / 10</span></p>
-          <p className="content-p">Release Date:<span className="content-data"> {this.props.movie.release_date}</span></p>
-          {this.props.currentUser.loggedIn && 
-          <button onClick={e => this.checkIfLoggedIn()}>Add this movie to favorites</button> }
-          {!this.props.currentUser.loggedIn && <NavLink to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
+          <img src={this.url+this.props.movie.backdrop_path} alt='Movie poster' className="movie-backdrop"/>
         </div>
-        </div>
-        
-        <img src={this.url+this.props.movie.backdrop_path} alt='Movie poster' className="movie-backdrop"/>
-      </div>
-    <img src={this.url+this.props.movie.poster_path} alt='Movie poster' className="movie-poster"/>
-    </article>
-  )
-  
-}
+      <img src={this.url+this.props.movie.poster_path} alt='Movie poster' className="movie-poster"/>
+      </article>
+    )
+    }
 }
 
 
 export const mapStateToProps = state => ({
   currentUser: state.currentUser,
+  favorites: state.favorites[0]
 })
 
-export const mapDispatchToProps = dispatch => ({
-  handleClick: (favMovie) => dispatch(addFavorite(favMovie)),
-  getFavorites: (favoriteMovies) => dispatch(getFavorites(favoriteMovies))
+const mapDispatchToProps = dispatch => ({
+  handleClick: (favMovie, userId) => dispatch(addFavorite(favMovie, userId)),
+  getFavorites: (favoriteMovies) => dispatch(getFavorites(favoriteMovies)),
+  removeFavorite: (userId, movieId) => dispatch(removeFavorite(userId, movieId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

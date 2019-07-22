@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Container should match snapshot 1`] = `
+<main
+  className="movie-container"
+>
+  <Connect(GenreContainer)
+    title="ACTION"
+  />
+</main>
+`;

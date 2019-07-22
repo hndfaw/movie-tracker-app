@@ -1,3 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignIn Container SignIn Component should match the snapshot 1`] = `ShallowWrapper {}`;
+exports[`SignIn Container SignIn Component should match the snapshot 1`] = `
+<div
+  className="signin-container"
+>
+  <form
+    className="signin-form"
+  >
+    <h2
+      className="sigin-header"
+    >
+      Sign In
+    </h2>
+    <div
+      className="input-btn-container"
+    >
+      <div
+        className="input-container"
+      >
+        <label
+          htmlFor="signIn-email"
+        >
+          Email
+        </label>
+        <input
+          id="signIn-email"
+          name="email"
+          onChange={[Function]}
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="input-container"
+      >
+        <label
+          htmlFor="signIn-password"
+        >
+          Password
+        </label>
+        <input
+          id="signIn-password"
+          name="password"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+      <p
+        className="error-msg"
+      />
+      <button
+        className="signin-btn"
+        onClick={[Function]}
+      >
+        Sign In
+      </button>
+    </div>
+  </form>
+</div>
+`;

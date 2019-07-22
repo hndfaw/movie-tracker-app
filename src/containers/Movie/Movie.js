@@ -24,17 +24,30 @@ const Movie = ({ movie, currentUser, handleClick, getFavorites, favoriteMovies }
     }
   }
   return (
+
     <article className='movie'>
-      <img src={url+movie.backdrop_path} alt='Movie poster'/>
-      <div className='movie-info-card'>
-        <h2>{movie.title}</h2>
-        <h3>Release Date: </h3><p>{movie.release_date}</p>
-        <h3>Description: </h3><p>{movie.overview}</p>
-        <h3>Rating: </h3><p>{movie.vote_average} out of 10</p>
+
+      <div className="movie-detail-container">
+        <div className='movie-info-card'>
+          <h2 className="movie-title">{movie.title}</h2>
+          <p>{movie.overview}</p>
+        <div className="date-rating-container">
+          <p className="content-p">Rating:<span className="content-data"> {movie.vote_average} / 10</span></p>
+          <p className="content-p">Release Date:<span className="content-data"> {movie.release_date}</span></p>
+          {currentUser.loggedIn && 
+          <button onClick={e => checkIfLoggedIn()}>Add this movie to favorites</button> }
+          {!currentUser.loggedIn && <NavLink to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
+        </div>
+           
+        </div>
+        
+  
+        <img src={url+movie.backdrop_path} alt='Movie poster' className="movie-backdrop"/>
       </div>
-      {currentUser.loggedIn && 
+      {/* {currentUser.loggedIn && 
       <button onClick={e => checkIfLoggedIn()}>Add this movie to favorites</button> }
       {!currentUser.loggedIn && <NavLink to="/login">Sign in to Favorite</NavLink>}
+      <img src={url+movie.poster_path} alt='Movie poster' className="movie-poster"/> */}
     </article>
   )
 }

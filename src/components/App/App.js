@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import Movie from '../../Containers/Movie/Movie'
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import './App.css';
 import { fetchFilms } from '../../apiCalls'
 import SignUpForm from '../SignUpForm/SignUpForm'
@@ -43,13 +43,16 @@ class App extends Component {
           />
           <Route exact path='/login'
             render={() => (
+              user.loggedIn ? (
+                <Redirect to="/"/>
+              ) : (
               <>
               <header className="App-header-login">
                   <NavLink to='/' className="logo logo-signup">MOVIE <span className="logo-tracker">TRACKER</span></NavLink>
                 </header>
             <SignUpForm />
             <img src={require("../../images/login-background.jpeg")} className='background-image' alt="movie"/>
-              </>
+              </>)
               )}
           />
           <Route exact path='/movie/:id' 
@@ -65,7 +68,7 @@ class App extends Component {
           />
           <Route exact path="/favorites"
             render={ ({match}) => {
-              
+
             }}/>
         </Switch>
       </div>

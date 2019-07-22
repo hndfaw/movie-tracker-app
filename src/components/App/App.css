@@ -105,7 +105,6 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.322);
 }
 
 .logout-btn {
@@ -119,4 +118,16 @@ footer {
 
 .logout-btn:hover {
 background: #01D277;
+}
+
+.logout-arrow {
+  background-image: linear-gradient(#141414, #2c2b2b);
+
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -5px;
+  right: 9px;
+  transform: rotate(45deg);
+  z-index: -1;
 }

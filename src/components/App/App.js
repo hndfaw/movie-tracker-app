@@ -29,8 +29,7 @@ class App extends Component {
   render() {
     const user = this.props.currentUser;
     const headerLink = !user.loggedIn ? 'Login' : `Welcome, ${user.userDetail.name.toUpperCase()}!`
-    const logOutStyle = this.props.logOutMenuOpen ? {display: 'flex'} : {display: 'flex'}
-
+    const logOutStyle = this.props.logOutMenuOpen ? {display: 'flex'} : {display: 'none'}
 
     return (
       <div className="App">
@@ -43,6 +42,7 @@ class App extends Component {
                   {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>}
                   <NavLink  to='/login' onClick={this.toggleLogOutMenuFunc} className="login-name">{headerLink}</NavLink>
                   <div className="logout-container" style={logOutStyle}>
+                    <div className="logout-arrow"></div>
                     <button className="logout-btn" onClick={this.logout}>Log Out</button>
                   </div>
                   

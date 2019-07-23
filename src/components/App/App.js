@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { logOut, toggleLogOutMenu } from '../../actions';
 import ShowFavorites from '../../Containers/ShowFavorites/ShowFavorite'
 
-class App extends Component {
+export class App extends Component {
 
    componentDidMount() {
     fetchFilms().then(data => 
@@ -99,7 +99,7 @@ export const mapStateToProps = state => ({
   logOutMenuOpen: state.logOutMenuOpen
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleMoviesData: movies => dispatch(recentMovies(movies)),
   handleLogOut: () => dispatch(logOut()),
   handleToggleLogOutMenu: () => dispatch(toggleLogOutMenu())

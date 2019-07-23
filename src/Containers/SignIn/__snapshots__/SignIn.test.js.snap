@@ -43,7 +43,7 @@ exports[`SignIn Container SignIn Component should match the snapshot 1`] = `
           id="signIn-password"
           name="password"
           onChange={[Function]}
-          type="text"
+          type="password"
           value=""
         />
       </div>

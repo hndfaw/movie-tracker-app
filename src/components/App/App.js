@@ -74,10 +74,7 @@ export class App extends Component {
           <Route exact path='/movie/:movie_id' 
             render={({ match }) => {
               const movie_id = match.params;
-              console.log(movie_id.movie_id)
-              debugger;
               const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(movie_id.movie_id))
-              console.log(movie)
               return movie && <Movie movie={movie} />
             }}
             />

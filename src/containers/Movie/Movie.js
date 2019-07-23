@@ -69,7 +69,7 @@ export class Movie extends Component {
 
 export const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  favorites: state.favorites[0]
+  favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => ({

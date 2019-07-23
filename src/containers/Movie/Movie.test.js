@@ -2,7 +2,24 @@ import React from 'react';
 import {Movie} from './Movie';
 import {shallow, mount} from 'enzyme';
 
-const checkIfLoggedIn = jest.fn()
+let favorites = [
+  {
+    id: 2,
+    title: 'Booboo the Fool',
+    poster_path: "/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
+    release_date: '2019-11-26',
+    vote_average: 4.9,
+    overview: 'I aint one of your little friends'
+  },
+  {
+    id: 3,
+    title: 'BlueFace Baby',
+    poster_path: "/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
+    release_date: '2019-01-26',
+    vote_average: 7.9,
+    overview: 'Mopped the floor and hid the wet sign just to catch them slipping.'
+  }
+]
 const movie = {
   id: 1,
   title: 'The Adventure of TronKat',
@@ -48,6 +65,7 @@ describe('Movie', () => {
             currentUser={currentUser2} 
             handleClick={handleClick}
             getFavorites={getFavorites}
+            favorites={favorites}
             />
     )
   })
@@ -80,12 +98,13 @@ describe('Movie', () => {
 
   it('handleClick should pass in an object when called', () => {
     wrapper.instance().checkIfLoggedIn();
-    expect(wrapper.instance().props.handleClick).toHaveBeenCalledWith(favMovie)
+    expect(wrapper.instance().props.handleClick).toHaveBeenCalledWith(favMovie, 12)
   })
 
   it('getFavorite should pass in an id when called', () => {
+    let id = 12
     wrapper.instance().checkIfLoggedIn();
-    expect(wrapper.instance().props.getFavorites).toHaveBeenCalledWith(12)
+    expect(wrapper.instance().props.getFavorites).toHaveBeenCalledWith(id);
   })
 
   it('should have a base url', () => {

@@ -71,10 +71,13 @@ export class App extends Component {
               </>)
               )}
           />
-          <Route exact path='/movie/:id' 
+          <Route exact path='/movie/:movie_id' 
             render={({ match }) => {
-              const id = match.params;
-              const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(id.id))
+              const movie_id = match.params;
+              console.log(movie_id.movie_id)
+              debugger;
+              const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(movie_id.movie_id))
+              console.log(movie)
               return movie && <Movie movie={movie} />
             }}
             />
@@ -95,7 +98,7 @@ export class App extends Component {
 export const mapStateToProps = state => ({
   movies: state.movies,
   currentUser: state.currentUser,
-  favorites: state.favorites,
+  favorites: state.favorites[0],
   logOutMenuOpen: state.logOutMenuOpen
 })
 

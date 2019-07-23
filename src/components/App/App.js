@@ -25,6 +25,12 @@ export class App extends Component {
   toggleLogOutMenuFunc = () => {
     this.props.currentUser.loggedIn && this.props.handleToggleLogOutMenu()
     }
+
+    renderMovie = ({ match }) => {
+      const movie_id = match.params;
+      const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(movie_id.movie_id))
+      return movie && <Movie movie={movie} />
+    }
   
 
   render() {
@@ -72,11 +78,7 @@ export class App extends Component {
               )}
           />
           <Route exact path='/movie/:movie_id' 
-            render={({ match }) => {
-              const movie_id = match.params;
-              const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(movie_id.movie_id))
-              return movie && <Movie movie={movie} />
-            }}
+            render={this.renderMovie}
             />
             <Route exact path="/favorites"
               render={ ({match}) => {

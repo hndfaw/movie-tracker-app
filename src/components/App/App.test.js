@@ -43,4 +43,19 @@ describe('App', ()=> {
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
   })
 
+  it('logout function should call two other functions', () => {
+    let currentUser ={loggedIn: true, userDetail: {name: 'someone'}}
+    let wrapper = shallow(<App currentUser={currentUser}/>);
+    wrapper.instance().logout();
+    expect(wrapper.instance().props.handleLogOut).toHaveBeenCalled();
+    expect(wrapper.instance().props.handleToggleLogOutMenu).toHaveBeenCalled();
+  })
+
+  // it('renderMovie should return movie snippet', () => {
+  //   wrapper.instance().checkIfLoggedIn();
+  //   expect(wrapper.instance().props.handleClick).toHaveBeenCalledWith(favMovie, 12)
+
+  // })
+
+
   });

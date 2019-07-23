@@ -28,7 +28,7 @@ describe('fetchFilms', () => {
     expect(result).toEqual(mockFilmsResponse)
   })
 
-  it.skip('fetchFilms should return error if status is not ok', async () => {
+  it('fetchFilms should return error if status is not ok', async () => {
     window.fetch = jest.fn().mockImplementationOnce(() => {
       return Promise.resolve( {
         ok: false,
@@ -36,4 +36,6 @@ describe('fetchFilms', () => {
     })
     await expect(fetchFilms()).rejects.toEqual(Error('Error fetching films'))
   })
+
+  
 })

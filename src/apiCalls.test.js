@@ -1,6 +1,5 @@
 import { fetchFilms } from './apiCalls';
 
-
 describe('fetchFilms', () => {
   let mockFilmsResponse
   beforeEach( () => {

@@ -57,6 +57,11 @@ exports[`Movie Should match Logged In Snapshot 1`] = `
       src="https://image.tmdb.org/t/p/w500undefined"
     />
   </div>
+  <img
+    alt="Movie poster"
+    className="movie-poster"
+    src="https://image.tmdb.org/t/p/w500/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg"
+  />
 </article>
 `;
 
@@ -118,5 +123,10 @@ exports[`Movie Should match Logged Out Snapshot 1`] = `
       src="https://image.tmdb.org/t/p/w500undefined"
     />
   </div>
+  <img
+    alt="Movie poster"
+    className="movie-poster"
+    src="https://image.tmdb.org/t/p/w500/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg"
+  />
 </article>
 `;

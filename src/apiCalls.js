@@ -10,7 +10,6 @@ export const fetchFilms = ()=> {
      })
 };
 
-
 export const fetchUser = (data) => {
   const option = {
     method: 'POST',
@@ -21,7 +20,7 @@ export const fetchUser = (data) => {
   }
   let url = 'http://localhost:3000/api/users'
    return fetchData(url, option)
-     .catch(error => console.log(error.message))
+     .catch(error => error ('Error fetching user'))
 };
 
 export const postNewUser = (data) => {
@@ -34,7 +33,7 @@ export const postNewUser = (data) => {
   }
   const url = 'http://localhost:3000/api/users/new'
     return fetchData(url, options)
-      .catch(error => console.log(error.message))
+      .catch(error => error ('Error fetching new user'))
 }
 
 export const fetchData = (url, options) => {

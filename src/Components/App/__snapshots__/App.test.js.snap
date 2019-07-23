@@ -32,38 +32,6 @@ exports[`App should match the snapshot 1`] = `
 </div>
 `;
 
-exports[`App should match the snapshot 2`] = `
-<div
-  className="App"
->
-  <Switch>
-    <Route
-      exact={true}
-      path="/"
-      render={[Function]}
-    />
-    <Route
-      exact={true}
-      path="/login"
-      render={[Function]}
-    />
-    <Route
-      exact={true}
-      path="/movie/:movie_id"
-      render={[Function]}
-    />
-    <Route
-      exact={true}
-      path="/favorites"
-      render={[Function]}
-    />
-    <Route
-      render={[Function]}
-    />
-  </Switch>
-</div>
-`;
-
 exports[`App should match the snapshot if user is logged in 1`] = `
 <div
   className="App"

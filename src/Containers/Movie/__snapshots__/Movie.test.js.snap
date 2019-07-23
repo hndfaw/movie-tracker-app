@@ -44,12 +44,12 @@ exports[`Movie Should match Logged In Snapshot 1`] = `
             2019-01-26
           </span>
         </p>
-        <NavLink
-          className="movie-login-link"
-          to="/login"
+        <button
+          className="add-fav-btn"
+          onClick={[Function]}
         >
-          Sign in to Favorite
-        </NavLink>
+          Add to favorites
+        </button>
       </div>
     </div>
     <img

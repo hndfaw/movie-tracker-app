@@ -3,7 +3,7 @@ import MovieSnippet from '../../Containers/MovieSnippet/MovieSnippet';
 import { connect } from 'react-redux'
 import './GenreContainer.css'
 
-const GenreContainer = props => {
+export const GenreContainer = props => {
   const { movies } = props;
   const snippets = movies.map(movie => {
     return <MovieSnippet path={movie.poster_path} 

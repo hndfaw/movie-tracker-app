@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenreContainer GenreContainer Component Should match the Snapshot 1`] = `
+<section
+  className="genre-container"
+>
+  <MovieSnippet
+    id={1}
+    key="1"
+    path="mockUrl"
+  />
+</section>
+`;

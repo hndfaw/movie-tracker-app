@@ -9,10 +9,10 @@ describe('moviesReducer', () => {
 
   it('should return new array with new todo', () => {
     // setup
-    const expected = [{movie: 'movie name', id: 1}];
+    const expected = [{movie: 'movie name', id: 1, movie_id: 1}];
     const expectedAction = {
       type: 'RECENT_MOVIES',
-      movies: [{movie: 'movie name', id: 1}]
+      movies: [{movie: 'movie name', id: 1, movie_id: 1}]
     }
 
     // execution

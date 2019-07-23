@@ -27,9 +27,16 @@
   border-radius: 3px;
   cursor: pointer;
   outline: none;
+  text-decoration: none;
+  color: #000;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.add-fav-btn:hover {
+.add-fav-btn:hover,
+.movie-login-link:hover {
   background: #01D277;
 }
 

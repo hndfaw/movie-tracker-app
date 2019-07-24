@@ -7,11 +7,11 @@ const GenreContainer = props => {
   const { movies, favorites, favShowedReducer } = props;
   const x = favShowedReducer ? favorites[0] : movies
   console.log('all movies', x)
-  const snippets = x.map((movie, i) => {
-    console.log('single movie', movie.poster_path)
+  const snippets = x.map(movie => {
+    console.log('single movie', movie.id)
     return <MovieSnippet path={movie.poster_path} 
                          key={movie.id} 
-                         id={movie.id}/>
+                         id={movie.movie_id}/>
   })
   return (
     <section className='genre-container'>

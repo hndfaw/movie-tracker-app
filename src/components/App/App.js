@@ -9,12 +9,17 @@ import { recentMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { logOut, toggleLogOutMenu } from '../../actions';
 import ShowFavorites from '../../Containers/ShowFavorites/ShowFavorite'
+import { favShowed } from '../../actions';
 
 export class App extends Component {
 
    componentDidMount() {
     fetchFilms().then(data => 
       this.props.handleMoviesData(data.results))
+  }
+
+  showFav = () => {
+    this.props.handleShowFav()
   }
 
   logout = () => {
@@ -46,8 +51,15 @@ export class App extends Component {
               <>
                 <header className="App-header">
                   <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
-                  {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>}
+
+                  {/* {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>} */}
+
+               <div className="header-links-container">
+                  {user.loggedIn && <button to='/' className="favorites-btn" onClick={this.showFav}>Favorite Movies</button>}
                   <NavLink  to='/login' onClick={this.toggleLogOutMenuFunc} className="login-name">{headerLink}</NavLink>
+              </div>
+             
+
                   <div className="logout-container" style={logOutStyle}>
                     <div className="logout-arrow"></div>
                     <button className="logout-btn" onClick={this.logout}>Log Out</button>
@@ -104,7 +116,8 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   handleMoviesData: movies => dispatch(recentMovies(movies)),
   handleLogOut: () => dispatch(logOut()),
-  handleToggleLogOutMenu: () => dispatch(toggleLogOutMenu())
+  handleToggleLogOutMenu: () => dispatch(toggleLogOutMenu()),
+  handleShowFav: () => dispatch(favShowed())
 })
 
 

@@ -26,3 +26,6 @@ export const toggleLogOutMenu = () => ({
   type: 'TOGGLE_LOGOUT_MENU'
 })
 
+export const favShowed = () => ({
+  type: 'FAV_SHOWED',
+})

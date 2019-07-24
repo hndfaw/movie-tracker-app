@@ -12,7 +12,7 @@ export class Movie extends Component {
   checkIfLoggedIn = () => {
     if(this.props.currentUser.loggedIn) {
       const favMovie = {
-        movie_id: this.props.movie.id,
+        movie_id: this.props.movie.movie_id,
         user_id: this.props.currentUser.userDetail.id,
         title: this.props.movie.title,
         poster_path: this.props.movie.poster_path,

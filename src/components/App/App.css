@@ -45,15 +45,14 @@
   width: 50vw;
 }
 
-footer {
-  color: white;
-}
+
 
 .login-name,
 .favorites-page {
   color: #fff;
   text-decoration: none;
   padding-right: 32px;
+  margin-left: auto;
 }
 
 .login-name:hover {
@@ -87,6 +86,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .footer-text {
@@ -130,4 +130,19 @@ background: #01D277;
   right: 9px;
   transform: rotate(45deg);
   z-index: -1;
+}
+
+.favorites-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  margin-right: 40px;
+}
+
+.header-links-container {
+  display: flex;
+  justify-content: space-between;
 }

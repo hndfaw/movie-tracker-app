@@ -58,7 +58,8 @@ const movie = {
   poster_path: "/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
   release_date: '2019-01-26',
   vote_average: 9.9,
-  overview: 'TronKat is the worlds greatest gamer. But when the world needed him most he vanished.'
+  overview: 'TronKat is the worlds greatest gamer. But when the world needed him most he vanished.',
+  movie_id: 1
 }
 
 const currentUser1 = {

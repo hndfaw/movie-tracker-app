@@ -5,7 +5,6 @@ exports[`GenreContainer GenreContainer Component Should match the Snapshot 1`] =
   className="genre-container"
 >
   <MovieSnippet
-    id={1}
     key="1"
     path="mockUrl"
   />

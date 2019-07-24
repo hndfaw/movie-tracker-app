@@ -105,7 +105,7 @@ describe('All Reducers', () => {
         type: 'FAVORITE_MOVIES',
         movies: favMovies
       }
-      const expected = [{movie: 1}]
+      const expected = {movie: 1}
       const result = favoriteReducer(undefined, actionCreator)
       expect(result).toEqual(expected)
     })

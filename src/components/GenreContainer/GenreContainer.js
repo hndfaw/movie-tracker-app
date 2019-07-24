@@ -5,7 +5,7 @@ import './GenreContainer.css'
 
 export const GenreContainer = props => {
   const { movies, favorites, favShowedReducer } = props;
-  const showMovies = favShowedReducer ? favorites[0] : movies
+  const showMovies = favShowedReducer ? favorites : movies
   const snippets = showMovies.map(movie => {
     return <MovieSnippet path={movie.poster_path} 
                          key={movie.id} 

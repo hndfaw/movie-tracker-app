@@ -3,6 +3,7 @@ import { usersReducer } from './usersReducer'
 import { logOutMenuReducer } from './logOutMenuReducer'
 import { logInReducer } from './logInReducer'
 import { favoriteReducer } from './favoriteMoviesReducer'
+import { errorReducer } from './errorReducer'
 
 describe('All Reducers', () => {
   describe('moviesReducer', () => {
@@ -106,6 +107,23 @@ describe('All Reducers', () => {
       }
       const expected = [{movie: 1}]
       const result = favoriteReducer(undefined, actionCreator)
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('ErrorReducer', () => {
+    it('should return default state', () => {
+      const expected = null
+      const result = errorReducer(undefined, {})
+      expect(result).toEqual(expected)
+    })
+    it('Should be able to return an error message', () => {
+      const expected = 'Error Message'
+      const actionCreator = {
+        type: 'HAS_ERRORED',
+        errorMsg: 'Error Message'
+      }
+      const result = errorReducer(undefined, actionCreator)
       expect(result).toEqual(expected)
     })
   })

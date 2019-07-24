@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { logOut, toggleLogOutMenu } from '../../actions';
 import ShowFavorites from '../../Containers/ShowFavorites/ShowFavorite'
 
-class App extends Component {
+export class App extends Component {
 
    componentDidMount() {
     fetchFilms().then(data => 
@@ -24,6 +24,12 @@ class App extends Component {
 
   toggleLogOutMenuFunc = () => {
     this.props.currentUser.loggedIn && this.props.handleToggleLogOutMenu()
+    }
+
+    renderMovie = ({ match }) => {
+      const movie_id = match.params;
+      const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(movie_id.movie_id))
+      return movie && <Movie movie={movie} />
     }
   
 
@@ -72,14 +78,7 @@ class App extends Component {
               )}
           />
           <Route exact path='/movie/:movie_id' 
-            render={({ match }) => {
-              const movie_id = match.params;
-              console.log(movie_id.movie_id)
-              debugger;
-              const movie = this.props.movies.find(movie => parseInt(movie.id) === parseInt(movie_id.movie_id))
-              console.log(movie)
-              return movie && <Movie movie={movie} />
-            }}
+            render={this.renderMovie}
             />
             <Route exact path="/favorites"
               render={ ({match}) => {
@@ -102,7 +101,7 @@ export const mapStateToProps = state => ({
   logOutMenuOpen: state.logOutMenuOpen
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleMoviesData: movies => dispatch(recentMovies(movies)),
   handleLogOut: () => dispatch(logOut()),
   handleToggleLogOutMenu: () => dispatch(toggleLogOutMenu())

@@ -45,9 +45,10 @@ exports[`Movie Should match Logged In Snapshot 1`] = `
           </span>
         </p>
         <button
+          className="add-fav-btn"
           onClick={[Function]}
         >
-          Add this movie to favorites
+          Add to favorites
         </button>
       </div>
     </div>

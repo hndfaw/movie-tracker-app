@@ -11,8 +11,6 @@ export class Movie extends Component {
 
   checkIfLoggedIn = () => {
     if(this.props.currentUser.loggedIn) {
-      console.log(this.props.currentUser)
-      console.log(this.props.movie)
       const favMovie = {
         movie_id: this.props.movie.id,
         user_id: this.props.currentUser.userDetail.id,
@@ -51,10 +49,10 @@ export class Movie extends Component {
             <p className="content-p">Rating:<span className="content-data"> {this.props.movie.vote_average} / 10</span></p>
             <p className="content-p">Release Date:<span className="content-data"> {this.props.movie.release_date}</span></p>
             {this.props.currentUser.loggedIn && !this.checkForFavoritedMovie(this.props.movie) &&
-            <button onClick={e => this.checkIfLoggedIn()}>Add this movie to favorites</button> }
+            <button className="add-fav-btn" onClick={e => this.checkIfLoggedIn()}>Add to favorites</button> }
             {this.props.currentUser.loggedIn && this.checkForFavoritedMovie(this.props.movie) && 
-            <button onClick={() => this.props.removeFavorite(this.props.currentUser.userDetail.id, this.props.movie.id)}>Remove this movie from favorites</button>}
-            {!this.props.currentUser.loggedIn && <NavLink to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
+            <button onClick={() => this.props.removeFavorite(this.props.currentUser.userDetail.id, this.props.movie.id)} className="movie-login-link">Remove from favorites</button>}
+            {!this.props.currentUser.loggedIn && <NavLink  to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
           </div>
           </div>
 

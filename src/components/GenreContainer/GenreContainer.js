@@ -4,8 +4,11 @@ import { connect } from 'react-redux'
 import './GenreContainer.css'
 
 const GenreContainer = props => {
-  const { movies } = props;
-  const snippets = movies.map(movie => {
+  const { movies, favorites, favShowedReducer } = props;
+  const x = favShowedReducer ? favorites[0] : movies
+  console.log('all movies', x)
+  const snippets = x.map((movie, i) => {
+    console.log('single movie', movie.poster_path)
     return <MovieSnippet path={movie.poster_path} 
                          key={movie.id} 
                          id={movie.id}/>
@@ -18,7 +21,9 @@ const GenreContainer = props => {
 }
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  favorites: state.favorites,
+  favShowedReducer: state.favShowedReducer
 })
 
 export default connect(mapStateToProps, null)(GenreContainer);

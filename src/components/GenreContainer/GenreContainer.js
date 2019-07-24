@@ -3,7 +3,7 @@ import MovieSnippet from '../../Containers/MovieSnippet/MovieSnippet';
 import { connect } from 'react-redux'
 import './GenreContainer.css'
 
-const GenreContainer = props => {
+export const GenreContainer = props => {
   const { movies, favorites, favShowedReducer } = props;
   const showMovies = favShowedReducer ? favorites[0] : movies
   const snippets = showMovies.map(movie => {

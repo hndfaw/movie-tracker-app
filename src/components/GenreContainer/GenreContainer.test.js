@@ -1,30 +1,17 @@
-import { mapStateToProps } from './GenreContainer';
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import { mapStateToProps, GenreContainer } from './GenreContainer';
+import React from 'react';
+import { shallow, mount } from 'enzyme';
 
-describe('App', ()=> {
+describe('GenreContainer', () => {
+  describe('GenreContainer Component', () => {
+    let wrapper, mockMovies;
+    beforeEach(() => {
+      mockMovies = [{title: 'Ryans day', poster_path: 'mockUrl', id: 1}]
+      wrapper = shallow(<GenreContainer movies={mockMovies}/>)
+    })
 
-  describe('GenreContainer Componenet', () => {
-    it.skip('', ()=> {
+    it('Should match the Snapshot', () => {
+      expect(wrapper).toMatchSnapshot()
     })
   })
-  
-  describe('mapStateToProps', () => {
-    it.skip('should return movies', () => {
-
-       const mockState = {
-         movies: [{movie: 'movie name', id: 1}],
-         users: [{}],
-         currentUser: {}
-       }
-
-       const expected = {
-         movies: [{movie: 'movie name', id: 1}]
-       }
-
-       const mappedProps = mapStateToProps(mockState);
-       expect(mappedProps).toEqual(expected)
-     });
-  });
-
-});
+})

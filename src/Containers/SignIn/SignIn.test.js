@@ -1,12 +1,16 @@
 import React from 'react'
 import {SignIn, mapDispatchToProps} from './SignIn'
 import { shallow } from 'enzyme'
-import { signIn } from '../../actions/index'
+import { signIn } from '../../actions/index';
+import { fetchUser } from '../../apiCalls'
 
 describe('SignIn Container', () => {
   describe('SignIn Component', () => {
     let wrapper;
     beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve({ok: true, data: undefined})
+      }))
       wrapper = shallow(<SignIn />)
     })
 
@@ -59,10 +63,27 @@ describe('SignIn Container', () => {
       expect(wrapper.state().error).toEqual(exptectedErrorStateNow)
     })
 
-    it('Should call the fetchUser api call when calling the handleUserSignIn method', () => {
-      //Mock fetch call?
-      //expect handleUserSign in to be called with fetchuser?
-      //Do I need to mock the handleUserSign In as well?
+    it('should handleChanges update state email', () => {
+      wrapper.find('#signIn-email').simulate('change', {
+        target: {name: 'email', value: 'email@email.com'}
+      })
+      expect(wrapper.state().email).toEqual('email@email.com')
+    })
+
+    it('should handleChanges update state password', () => {
+      wrapper.find('#signIn-email').simulate('change', {
+        target: {name: 'password', value: 'password'}
+      })
+      expect(wrapper.state().password).toEqual('password')
+    })
+
+    it('Should call the fetchUser api call when calling the handleUserSignIn method', async () => {
+      wrapper.instance().handleResetInputs = jest.fn();
+      await wrapper.find('.signin-btn').simulate('click', {
+        preventDefault: () => {}
+      })
+      await expect(window.fetch).toHaveBeenCalled();
+      expect(wrapper.instance().handleResetInputs).toHaveBeenCalled();
     })
   })
 

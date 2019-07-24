@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow }  from 'enzyme'
-import SignUp from '../SignUp/SignUp'
+import SignUp from '../SignUp/SignUp';
+import { postNewUser } from '../../apiCalls';
 
 describe('SignUp', () => {
   let wrapper;
@@ -38,9 +39,30 @@ describe('SignUp', () => {
   })
 
   it('should have a handleSignUp method that calls of postNewUser api call', () => {
-    //What in this do I need to mock?
-    //what should I be expecting to happen here?
-    //Should I break out the setState error handling into another method?
-    
+    wrapper.instance().handleSignUp = jest.fn();
+    wrapper.find('.signup-btn').simulate('click', {
+      preventDefault: () => {}
+    })
+    expect(wrapper.instance().handleSignUp).toHaveBeenCalled();
+  })
+
+  it('should call handleInput when change happen', () => {
+    wrapper.instance().handleInput = jest.fn();
+    wrapper.find('#signup-name').simulate('change', {
+      target: {name: 'name', value: 'a'}
+    })
+    expect(wrapper.instance().handleInput).toHaveBeenCalled();
+    wrapper.find('#signup-email').simulate('change', {
+      target: {name: 'email', value: 'a'}
+    })
+    expect(wrapper.instance().handleInput).toHaveBeenCalled();
+    wrapper.find('#signup-password-1').simulate('change', {
+      target: {name: 'password', value: 'a'}
+    })
+    expect(wrapper.instance().handleInput).toHaveBeenCalled();
+    wrapper.find('#signup-password-2').simulate('change', {
+      target: {name: 'password2', value: 'a'}
+    })
+    expect(wrapper.instance().handleInput).toHaveBeenCalled();
   })
 })

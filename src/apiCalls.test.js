@@ -1,5 +1,4 @@
-import { fetchFilms } from './apiCalls';
-
+import { fetchFilms, fetchUser, postNewUser} from './apiCalls';
 
 describe('fetchFilms', () => {
   let mockFilmsResponse
@@ -29,7 +28,7 @@ describe('fetchFilms', () => {
     expect(result).toEqual(mockFilmsResponse)
   })
 
-  it.skip('fetchFilms should return error if status is not ok', async () => {
+  it('fetchFilms should return error if status is not ok', async () => {
     window.fetch = jest.fn().mockImplementationOnce(() => {
       return Promise.resolve( {
         ok: false,
@@ -37,4 +36,71 @@ describe('fetchFilms', () => {
     })
     await expect(fetchFilms()).rejects.toEqual(Error('Error fetching films'))
   })
+
+  describe('fetchUser', () => {
+    let mockUser;
+
+    beforeEach(() => {
+      mockUser = {name: "someone"}
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockUser)
+        })
+      })
+    })
+    const URL = 'http://localhost:3000/api/users';
+
+    it('should return a parsed response if everything is ok', async () => {
+      const result = await fetchUser(
+        URL,
+        mockUser,
+        'POST',
+        'Error fetchingnpm user');
+      expect(result).toEqual(mockUser)
+    })
+
+    it('shoud return an error if the response is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        })
+      })
+      expect(fetchUser(URL, mockUser, 'POST', 'Error fetching a user')).rejects.toEqual(Error('Error fetching user'));
+    })
+  })
+
+  describe('postNewUser', () => {
+    let mockUser;
+
+    beforeEach(() => {
+      mockUser = {name: "someone"}
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockUser)
+        })
+      })
+    })
+    const URL = 'http://localhost:3000/api/users/new';
+
+    it('should return a parsed response if everything is ok', async () => {
+      const result = await postNewUser(
+        URL,
+        mockUser,
+        'POST',
+        'Error fetching new user');
+      expect(result).toEqual(mockUser)
+    })
+
+    it('shoud return an error if the response is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        })
+      })
+      expect(postNewUser(URL, mockUser, 'POST', 'Error fetching a user')).rejects.toEqual(Error('Error fetching new user'));
+    })
+  })
+    
 })

@@ -4,7 +4,8 @@ import { usersReducer } from './usersReducer';
 import { logInReducer } from './logInReducer'; 
 import { favoriteReducer } from './favoriteMoviesReducer';
 import { errorReducer } from './errorReducer';
-import { logOutMenuReducer } from './logOutMenuReducer'
+import { logOutMenuReducer } from './logOutMenuReducer';
+import { favShowedReducer } from './favShowedReducer';
 
 const rootReducer = combineReducers({
   movies: moviesReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   currentUser: logInReducer,
   favorites: favoriteReducer,
   errorMsg: errorReducer,
-  logOutMenuOpen: logOutMenuReducer
+  logOutMenuOpen: logOutMenuReducer,
+  favShowedReducer
 });
 
 export default rootReducer;

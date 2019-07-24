@@ -1,68 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie Tracker
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This project is a simple site, built with React and Redux, that displays the most recent movies to be released. The user may sekect a movie poster and will be presented with information about that particular movie. If the user creates an account and logs in, the user may favorite individual movies and display only those movies.
 
-### `npm start`
+## Setup
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Simply start by cloning this repo for front end and the following repo for the back end in sepreate folders:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```bash
+git clone git@github.com:hndfaw/movie-tracker-app.git
+```
 
-### `npm test`
+```bash
+git clone git@github.com:turingschool-examples/movie-tracker.git
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once you have cloned the repos, to install the library dependencies. Run:
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run `npm start` in your terminal. Go to `http://localhost:3000/` and you should see a live version of the application if installed correctly.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Home Page:
 
-### `npm run eject`
+<img width="1439" alt="Screen Shot 2019-07-24 at 8 30 46 AM" src="https://user-images.githubusercontent.com/36940278/61803433-a1031b80-ae21-11e9-892f-8d6703b208b9.png">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Log In / Sign Up:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img width="1437" alt="Screen Shot 2019-07-24 at 8 32 45 AM" src="https://user-images.githubusercontent.com/36940278/61803502-c7c15200-ae21-11e9-9a89-38654a8ca1e2.png">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img width="1438" alt="Screen Shot 2019-07-24 at 8 33 14 AM" src="https://user-images.githubusercontent.com/36940278/61804071-ca707700-ae22-11e9-84f7-1de4af20a5e3.png">
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+individual Movie:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img width="1440" alt="Screen Shot 2019-07-24 at 8 33 47 AM" src="https://user-images.githubusercontent.com/36940278/61804143-ef64ea00-ae22-11e9-8c94-e35134c98f84.png">
 
-### Code Splitting
+## Emphasis of the Project
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Further knowledge on the following technologies/principles:
 
-### Analyzing the Bundle Size
+- ReactJS
+- Redux
+- Thunks
+- JSX
+- Jest and Enzyme Testing
+- Fetch API's
+- Asynchronous JS and Testing
+- Router
+- GitHub Issues
+- SCSS
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

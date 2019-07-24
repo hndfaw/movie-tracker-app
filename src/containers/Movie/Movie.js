@@ -11,10 +11,8 @@ export class Movie extends Component {
 
   checkIfLoggedIn = () => {
     if(this.props.currentUser.loggedIn) {
-      console.log(this.props.currentUser)
-      console.log(this.props.movie)
       const favMovie = {
-        movie_id: this.props.movie.id,
+        movie_id: this.props.movie.movie_id,
         user_id: this.props.currentUser.userDetail.id,
         title: this.props.movie.title,
         poster_path: this.props.movie.poster_path,
@@ -26,8 +24,6 @@ export class Movie extends Component {
         this.props.handleClick(favMovie, this.props.currentUser.userDetail.id);
         this.props.getFavorites(this.props.currentUser.userDetail.id)
       }
-    } else {
-      console.log('Working')
     }
   }
   checkForFavoritedMovie = movie => {
@@ -51,10 +47,10 @@ export class Movie extends Component {
             <p className="content-p">Rating:<span className="content-data"> {this.props.movie.vote_average} / 10</span></p>
             <p className="content-p">Release Date:<span className="content-data"> {this.props.movie.release_date}</span></p>
             {this.props.currentUser.loggedIn && !this.checkForFavoritedMovie(this.props.movie) &&
-            <button onClick={e => this.checkIfLoggedIn()}>Add this movie to favorites</button> }
+            <button className="add-fav-btn" onClick={e => this.checkIfLoggedIn()}>Add to favorites</button> }
             {this.props.currentUser.loggedIn && this.checkForFavoritedMovie(this.props.movie) && 
-            <button onClick={() => this.props.removeFavorite(this.props.currentUser.userDetail.id, this.props.movie.id)}>Remove this movie from favorites</button>}
-            {!this.props.currentUser.loggedIn && <NavLink to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
+            <button onClick={() => this.props.removeFavorite(this.props.currentUser.userDetail.id, this.props.movie.id)} className="movie-login-link">Remove from favorites</button>}
+            {!this.props.currentUser.loggedIn && <NavLink  to="/login" className="movie-login-link">Sign in to Favorite</NavLink>}
           </div>
           </div>
 
@@ -72,7 +68,7 @@ export const mapStateToProps = state => ({
   favorites: state.favorites
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleClick: (favMovie, userId) => dispatch(addFavorite(favMovie, userId)),
   getFavorites: (favoriteMovies) => dispatch(getFavorites(favoriteMovies)),
   removeFavorite: (userId, movieId) => dispatch(removeFavorite(userId, movieId))

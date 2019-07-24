@@ -1,11 +1,14 @@
-export const fetchFilms = () => {
-  let url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=faeff26a101acfb04b4ebb285bac57bf&language=en-US&page=1'
-   return fetch(url)
-     .then(response => response.json())
-     .then(data => data)
-
+export const fetchFilms = ()=> {
+  let filmsURL = 'https://api.themoviedb.org/3/movie/now_playing?api_key=faeff26a101acfb04b4ebb285bac57bf&language=en-US&page=1'
+   return fetch(filmsURL)
+     .then(response => {
+       if(!response.ok) {
+         throw Error ('Error fetching films')
+       } else {
+       return response.json()
+       }
+     })
 };
-
 
 export const fetchUser = (data) => {
   const option = {
@@ -17,7 +20,7 @@ export const fetchUser = (data) => {
   }
   let url = 'http://localhost:3000/api/users'
    return fetchData(url, option)
-     .catch(error => console.log(error.message))
+     .catch(error => error ('Error fetching user'))
 };
 
 export const postNewUser = (data) => {
@@ -30,7 +33,7 @@ export const postNewUser = (data) => {
   }
   const url = 'http://localhost:3000/api/users/new'
     return fetchData(url, options)
-      .catch(error => console.log(error.message))
+      .catch(error => error ('Error fetching new user'))
 }
 
 export const fetchData = (url, options) => {

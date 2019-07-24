@@ -52,6 +52,7 @@
   color: #fff;
   text-decoration: none;
   padding-right: 32px;
+  margin-left: auto;
 }
 
 .login-name:hover {
@@ -138,4 +139,10 @@ background: #01D277;
   font-size: 16px;
   outline: none;
   cursor: pointer;
+  margin-right: 40px;
+}
+
+.header-links-container {
+  display: flex;
+  justify-content: space-between;
 }

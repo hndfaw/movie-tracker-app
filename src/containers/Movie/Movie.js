@@ -27,7 +27,7 @@ export class Movie extends Component {
     }
   }
   checkForFavoritedMovie = movie => {
-    const result = this.props.favorites.find(favMovie => favMovie.movie_id === movie.id)
+    const result = this.props.favorites[0].find(favMovie => favMovie.movie_id === movie.id)
     if(result !== undefined) {
       return true
     } else {

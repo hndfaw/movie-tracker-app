@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './signupform.css'
 
 
-class SignUpForm extends Component {
+export class SignUpForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -35,7 +35,7 @@ class SignUpForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   currentUser: state.currentUser
 })
 

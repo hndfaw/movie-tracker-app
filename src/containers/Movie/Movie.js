@@ -26,8 +26,6 @@ export class Movie extends Component {
         this.props.handleClick(favMovie, this.props.currentUser.userDetail.id);
         this.props.getFavorites(this.props.currentUser.userDetail.id)
       }
-    } else {
-      console.log('Working')
     }
   }
   checkForFavoritedMovie = movie => {
@@ -72,7 +70,7 @@ export const mapStateToProps = state => ({
   favorites: state.favorites
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   handleClick: (favMovie, userId) => dispatch(addFavorite(favMovie, userId)),
   getFavorites: (favoriteMovies) => dispatch(getFavorites(favoriteMovies)),
   removeFavorite: (userId, movieId) => dispatch(removeFavorite(userId, movieId))

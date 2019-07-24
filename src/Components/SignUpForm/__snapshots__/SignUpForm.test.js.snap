@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUpForm Should match snapshot 1`] = `
+<section>
+  <button
+    className="switch-to-signup-btn"
+    name="sign-up"
+    onClick={[Function]}
+  >
+    Sign Up
+  </button>
+  <Connect(SignIn) />
+</section>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show Favorites Should Match Snapshot 1`] = `
+<section>
+  <h2>
+    Favorite Movies!
+  </h2>
+  <MovieSnippet
+    id={1}
+    key="1"
+    path="/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg"
+  />
+  <MovieSnippet
+    id={2}
+    key="2"
+    path="/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg"
+  />
+  <MovieSnippet
+    id={3}
+    key="3"
+    path="/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg"
+  />
+</section>
+`;

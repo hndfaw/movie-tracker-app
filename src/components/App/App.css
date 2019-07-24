@@ -130,3 +130,12 @@ background: #01D277;
   transform: rotate(45deg);
   z-index: -1;
 }
+
+.favorites-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+}

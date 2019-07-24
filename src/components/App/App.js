@@ -53,10 +53,12 @@ export class App extends Component {
                   <h1 className="logo">MOVIE <span className="logo-tracker">TRACKER</span></h1>
 
                   {/* {user.loggedIn && <NavLink to='/favorites' className="favorites-page">Favorites</NavLink>} */}
+              <div>
 
-                  <button to='/' className="favorites-page" onClick={this.showFav}>Favorites</button>
-
+                  <button to='/' className="favorites-btn" onClick={this.showFav}>My Favorite Movies</button>
                   <NavLink  to='/login' onClick={this.toggleLogOutMenuFunc} className="login-name">{headerLink}</NavLink>
+              </div>
+
                   <div className="logout-container" style={logOutStyle}>
                     <div className="logout-arrow"></div>
                     <button className="logout-btn" onClick={this.logout}>Log Out</button>
